@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: panelvault-comics
+    env: static
+    buildCommand: ""
+    staticPublishPath: ./
