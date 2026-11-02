@@ -386,9 +386,16 @@
           <i data-lucide="sliders" class="w-4 h-4 stroke-[2.5]"></i>
         </button>
 
-        <!-- Fullscreen (Desktop) -->
-        <button id="btn-toggle-fullscreen" class="hidden sm:flex p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition" title="Pantalla Completa (F)">
-          <i data-lucide="maximize" id="fullscreen-icon" class="w-4 h-4"></i>
+        <!-- Modo Viñeta (Smart Panel Zoom) -->
+        <button id="btn-toggle-panel-mode" class="p-2 sm:px-3 sm:py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-amber-400 transition active:scale-95 border border-slate-700 flex items-center gap-1.5" title="Modo Viñeta: Haz clic en cualquier viñeta para verla a pantalla grande (V)">
+          <i data-lucide="scan" id="panel-mode-icon" class="w-4 h-4 text-amber-400"></i>
+          <span class="text-xs font-bold hidden md:inline">Modo Viñeta</span>
+        </button>
+
+        <!-- Pantalla Completa (Móvil y PC) -->
+        <button id="btn-toggle-fullscreen" class="p-2 sm:px-3 sm:py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition active:scale-95 border border-slate-700 flex items-center gap-1.5" title="Pantalla Completa (F)">
+          <i data-lucide="maximize" id="fullscreen-icon" class="w-4 h-4 text-amber-400"></i>
+          <span class="text-xs font-bold hidden md:inline">Pantalla Completa</span>
         </button>
       </div>
     </header>
@@ -413,6 +420,17 @@
       </div>
 
       <!-- Main Stage Container for Canvases -->
+      <!-- Floating Panel Zoom Indicator / Exit Button -->
+      <div id="panel-zoom-indicator" class="hidden absolute top-4 left-1/2 -translate-x-1/2 z-30 pointer-events-auto">
+        <div class="flex items-center gap-2.5 px-4 py-2 rounded-full bg-slate-900/95 text-white border border-amber-500/60 shadow-2xl backdrop-blur text-xs font-semibold">
+          <i data-lucide="scan" class="w-4 h-4 text-amber-400"></i>
+          <span>Viñeta en pantalla grande</span>
+          <button id="btn-exit-panel-zoom" class="ml-2 px-2.5 py-0.5 rounded-full bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-[11px] transition active:scale-95">
+            Salir (Esc)
+          </button>
+        </div>
+      </div>
+
       <div id="comic-stage" class="relative z-10 flex items-center justify-center gap-2 sm:gap-3 max-w-full max-h-full transition-transform">
         <!-- Canvas 1 (Left / Single) -->
         <div id="canvas-wrapper-left" class="relative bg-white shadow-2xl rounded-sm overflow-hidden flex items-center justify-center">
@@ -489,6 +507,18 @@
     <div class="bg-slate-900 border-t sm:border border-slate-700 rounded-t-3xl sm:rounded-2xl max-w-md w-full p-5 shadow-2xl safe-bottom max-h-[85vh] overflow-y-auto">
       
       <!-- Drawer Header -->
+      <!-- Quick Actions: Pantalla Completa & Modo Viñeta -->
+      <div class="mb-4 grid grid-cols-2 gap-2">
+        <button id="btn-sheet-toggle-fullscreen" class="p-3 rounded-xl text-xs font-bold bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 flex items-center justify-center gap-2 transition active:scale-95">
+          <i data-lucide="maximize" id="sheet-fullscreen-icon" class="w-4 h-4 text-amber-400"></i>
+          <span>Pantalla Completa</span>
+        </button>
+        <button id="btn-sheet-toggle-panel-mode" class="p-3 rounded-xl text-xs font-bold bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 flex items-center justify-center gap-2 transition active:scale-95">
+          <i data-lucide="scan" id="sheet-panel-mode-icon" class="w-4 h-4 text-amber-400"></i>
+          <span>Modo Viñeta</span>
+        </button>
+      </div>
+
       <div class="flex items-center justify-between pb-3 border-b border-slate-800 mb-4">
         <div class="flex items-center gap-2">
           <i data-lucide="sliders" class="w-5 h-5 text-amber-400"></i>
@@ -790,6 +820,10 @@
       isManga: false, // RTL page turning
       scaleMode: window.innerWidth < 768 ? 'fit-width' : 'fit-height', // On mobile default to fit-width for readable text!
       customScale: 1.0,
+      isPanelZoomed: false,
+      panelModeEnabled: false,
+      panelNormX: 0.5,
+      panelNormY: 0.5,
       theme: 'dark', // 'dark', 'oled', 'sepia', 'light'
       visualFilter: 'none', // 'none', 'invert', 'sepia'
       activeSection: localStorage.getItem('panelvault_active_section') || 'bookshelf',
@@ -1753,6 +1787,7 @@
 
     // Page Navigation
     function nextPage() {
+      if (AppState.isPanelZoomed) zoomOutFromPanel();
       const step = (AppState.readingMode === 'double' && window.innerWidth >= 640) ? 2 : 1;
       if (AppState.currentPage + step <= AppState.totalPages) {
         AppState.currentPage += step;
@@ -1764,6 +1799,7 @@
     }
 
     function prevPage() {
+      if (AppState.isPanelZoomed) zoomOutFromPanel();
       const step = (AppState.readingMode === 'double' && window.innerWidth >= 640) ? 2 : 1;
       if (AppState.currentPage - step >= 1) {
         AppState.currentPage -= step;
@@ -1902,22 +1938,157 @@
       }
     }
 
-    // Fullscreen Toggle
-    function toggleFullscreen() {
-      const reader = document.getElementById('reader-view');
-      const icon = document.getElementById('fullscreen-icon');
-      if (!document.fullscreenElement) {
-        reader.requestFullscreen().then(() => {
-          icon.setAttribute('data-lucide', 'minimize');
-          lucide.createIcons({ root: reader });
-        }).catch(() => {});
+    // ==========================================
+    // Smart Panel Zoom (Modo Viñeta en Pantalla Grande)
+    // ==========================================
+    function togglePanelMode(force) {
+      if (force !== undefined) {
+        AppState.panelModeEnabled = force;
       } else {
-        document.exitFullscreen().then(() => {
-          icon.setAttribute('data-lucide', 'maximize');
-          lucide.createIcons({ root: reader });
-        }).catch(() => {});
+        AppState.panelModeEnabled = !AppState.panelModeEnabled;
+      }
+
+      const btn = document.getElementById('btn-toggle-panel-mode');
+      const sheetBtn = document.getElementById('btn-sheet-toggle-panel-mode');
+      const stage = document.getElementById('comic-stage');
+
+      if (AppState.panelModeEnabled) {
+        btn?.classList.add('bg-amber-500', 'text-slate-950');
+        btn?.classList.remove('bg-slate-800', 'text-slate-300');
+        sheetBtn?.classList.add('bg-amber-500', 'text-slate-950');
+        sheetBtn?.classList.remove('bg-slate-800', 'text-slate-200');
+        stage?.classList.add('cursor-zoom-in');
+        showToast('Modo Viñeta activo: Haz clic en cualquier viñeta para verla a pantalla grande', 'info');
+      } else {
+        btn?.classList.remove('bg-amber-500', 'text-slate-950');
+        btn?.classList.add('bg-slate-800', 'text-slate-300');
+        sheetBtn?.classList.remove('bg-amber-500', 'text-slate-950');
+        sheetBtn?.classList.add('bg-slate-800', 'text-slate-200');
+        stage?.classList.remove('cursor-zoom-in');
+        if (AppState.isPanelZoomed) {
+          zoomOutFromPanel();
+        }
       }
     }
+
+    async function zoomIntoPanel(normX, normY) {
+      AppState.isPanelZoomed = true;
+      AppState.panelNormX = normX;
+      AppState.panelNormY = normY;
+
+      // Escala de viñeta grande para llenar la pantalla con nitidez máxima
+      const panelScale = window.innerWidth < 768 ? 2.6 : 2.35;
+      AppState.customScale = panelScale;
+
+      const stage = document.getElementById('comic-stage');
+      stage?.classList.remove('cursor-zoom-in');
+      stage?.classList.add('cursor-zoom-out');
+
+      // Mostrar indicador flotante
+      const indicator = document.getElementById('panel-zoom-indicator');
+      if (indicator) indicator.classList.remove('hidden');
+
+      // Actualizar texto de zoom
+      const zoomText = document.getElementById('zoom-level-text');
+      if (zoomText) zoomText.textContent = 'Viñeta';
+
+      // Re-renderizar en alta definición nativa para esta escala
+      await renderCurrentReadingView();
+
+      // Desplazar el visor para centrar la viñeta exactamente en la pantalla
+      setTimeout(() => {
+        const viewport = document.getElementById('reader-viewport');
+        const canvas = document.getElementById('reader-canvas-left');
+        if (viewport && canvas) {
+          const targetScrollX = (normX * canvas.offsetWidth) - (viewport.clientWidth / 2);
+          const targetScrollY = (normY * canvas.offsetHeight) - (viewport.clientHeight / 2);
+
+          viewport.scrollTo({
+            left: Math.max(0, targetScrollX),
+            top: Math.max(0, targetScrollY),
+            behavior: 'smooth'
+          });
+        }
+      }, 50);
+
+      showToast('Viñeta ampliada (Haz clic para volver a página completa)', 'info');
+    }
+
+    async function zoomOutFromPanel() {
+      if (!AppState.isPanelZoomed) return;
+      AppState.isPanelZoomed = false;
+      AppState.customScale = 1.0;
+
+      const stage = document.getElementById('comic-stage');
+      stage?.classList.remove('cursor-zoom-out');
+      if (AppState.panelModeEnabled) {
+        stage?.classList.add('cursor-zoom-in');
+      }
+
+      // Ocultar indicador flotante
+      const indicator = document.getElementById('panel-zoom-indicator');
+      if (indicator) indicator.classList.add('hidden');
+
+      const zoomText = document.getElementById('zoom-level-text');
+      if (zoomText) zoomText.textContent = AppState.scaleMode === 'fit-width' ? 'Ancho' : 'Alto';
+
+      await renderCurrentReadingView();
+
+      const viewport = document.getElementById('reader-viewport');
+      viewport?.scrollTo({ left: 0, top: 0, behavior: 'smooth' });
+    }
+
+    // ==========================================
+    // Fullscreen Toggle (Cross-Browser Móvil & PC)
+    // ==========================================
+    function toggleFullscreen() {
+      const docEl = document.documentElement;
+      const isFs = !!(document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement);
+      
+      if (!isFs) {
+        const req = docEl.requestFullscreen || docEl.webkitRequestFullscreen || docEl.mozRequestFullScreen || docEl.msRequestFullscreen;
+        if (req) {
+          req.call(docEl).then(() => {
+            updateFullscreenIcons(true);
+            showToast('Pantalla Completa Activada', 'info');
+          }).catch(() => {
+            toggleToolbars(false);
+            showToast('Modo Inmersivo sin barras activado', 'info');
+          });
+        } else {
+          toggleToolbars(false);
+          showToast('Modo Inmersivo sin barras activado', 'info');
+        }
+      } else {
+        const exit = document.exitFullscreen || document.webkitExitFullscreen || document.mozCancelFullScreen || document.msExitFullscreen;
+        if (exit) {
+          exit.call(document).then(() => {
+            updateFullscreenIcons(false);
+            showToast('Pantalla Completa Desactivada', 'info');
+          }).catch(() => {});
+        }
+      }
+    }
+
+    function updateFullscreenIcons(isFullscreen) {
+      const icons = [document.getElementById('fullscreen-icon'), document.getElementById('sheet-fullscreen-icon')];
+      icons.forEach(ic => {
+        if (ic) {
+          ic.setAttribute('data-lucide', isFullscreen ? 'minimize' : 'maximize');
+        }
+      });
+      if (window.lucide) lucide.createIcons();
+    }
+
+    document.addEventListener('fullscreenchange', () => {
+      const isFs = !!(document.fullscreenElement || document.webkitFullscreenElement);
+      updateFullscreenIcons(isFs);
+    });
+    document.addEventListener('webkitfullscreenchange', () => {
+      const isFs = !!(document.fullscreenElement || document.webkitFullscreenElement);
+      updateFullscreenIcons(isFs);
+    });
+
 
     // Modals Management
     function openUploadModal() {
@@ -2171,24 +2342,61 @@
         if (AppState.isManga) nextPage(); else prevPage();
       });
 
-      document.getElementById('click-zone-center').addEventListener('click', () => {
-        // Double tap detection for quick zoom on mobile!
-        const now = Date.now();
-        if (now - AppState.lastTapTime < 300) {
-          // Double tap -> toggle zoom between 1.0 and 1.5x
-          if (AppState.customScale === 1.0) {
-            AppState.customScale = 1.45;
-            showToast('Zoom 145%', 'info');
-          } else {
-            AppState.customScale = 1.0;
-            showToast('Zoom normal', 'info');
-          }
-          renderCurrentReadingView();
-        } else {
-          // Single tap -> toggle toolbars
-          toggleToolbars();
+      // Smart Panel Zoom & Center Tap Zone
+      document.getElementById('click-zone-center')?.addEventListener('click', (e) => {
+        if (AppState.isPanelZoomed) {
+          zoomOutFromPanel();
+          return;
         }
+
+        const now = Date.now();
+        const isDoubleTap = (now - AppState.lastTapTime < 350);
         AppState.lastTapTime = now;
+
+        if (AppState.panelModeEnabled || isDoubleTap) {
+          const canvas = document.getElementById('reader-canvas-left');
+          if (canvas) {
+            const rect = canvas.getBoundingClientRect();
+            const normX = Math.min(Math.max((e.clientX - rect.left) / rect.width, 0.05), 0.95);
+            const normY = Math.min(Math.max((e.clientY - rect.top) / rect.height, 0.05), 0.95);
+            zoomIntoPanel(normX, normY);
+            return;
+          }
+        }
+
+        // Single tap toggles toolbars
+        toggleToolbars();
+      });
+
+      // Direct Canvas Click for Panel Zoom
+      ['reader-canvas-left', 'reader-canvas-right'].forEach(id => {
+        const c = document.getElementById(id);
+        c?.addEventListener('click', (e) => {
+          if (AppState.isPanelZoomed) {
+            zoomOutFromPanel();
+            return;
+          }
+          if (AppState.panelModeEnabled) {
+            const rect = c.getBoundingClientRect();
+            const normX = Math.min(Math.max((e.clientX - rect.left) / rect.width, 0.05), 0.95);
+            const normY = Math.min(Math.max((e.clientY - rect.top) / rect.height, 0.05), 0.95);
+            zoomIntoPanel(normX, normY);
+          }
+        });
+      });
+
+      // Panel Mode Buttons & Indicator
+      document.getElementById('btn-toggle-panel-mode')?.addEventListener('click', () => togglePanelMode());
+      document.getElementById('btn-sheet-toggle-panel-mode')?.addEventListener('click', () => {
+        closeMobileSettings();
+        togglePanelMode();
+      });
+      document.getElementById('btn-exit-panel-zoom')?.addEventListener('click', zoomOutFromPanel);
+
+      // Fullscreen Sheet Button
+      document.getElementById('btn-sheet-toggle-fullscreen')?.addEventListener('click', () => {
+        closeMobileSettings();
+        toggleFullscreen();
       });
 
       // Scrubber range slider
@@ -2365,8 +2573,14 @@
           } else if (e.key === 'ArrowLeft') {
             e.preventDefault();
             if (AppState.isManga) nextPage(); else prevPage();
+          } else if (e.key === 'v' || e.key === 'V') {
+            togglePanelMode();
           } else if (e.key === 'Escape') {
-            closeReader();
+            if (AppState.isPanelZoomed) {
+              zoomOutFromPanel();
+            } else {
+              closeReader();
+            }
           } else if (e.key === 'f' || e.key === 'F') {
             toggleFullscreen();
           } else if (e.key === 'd' || e.key === 'D') {
