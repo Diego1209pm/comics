@@ -114,10 +114,10 @@
        CINEMATIC WEB AESTHETIC & 3D CAROUSEL
        ========================================== */
     .cinematic-bg {
-      background-color: #030706;
+      background-color: #070203;
       background-image: 
-        radial-gradient(circle at 50% 18%, rgba(16, 185, 129, 0.14) 0%, rgba(6, 78, 59, 0.08) 38%, rgba(3, 7, 6, 0.98) 78%),
-        linear-gradient(180deg, #020504 0%, #05100d 50%, #020403 100%);
+        radial-gradient(circle at 50% 18%, rgba(220, 38, 38, 0.16) 0%, rgba(127, 29, 29, 0.09) 38%, rgba(7, 2, 3, 0.98) 78%),
+        linear-gradient(180deg, #050102 0%, #110406 50%, #040102 100%);
     }
 
     /* Subtle Horizontal Scanline / Film Grain Texture */
@@ -154,7 +154,7 @@
     }
 
     .cinematic-vignette {
-      background: radial-gradient(circle at center, transparent 35%, rgba(2, 5, 4, 0.85) 85%, #020504 100%);
+      background: radial-gradient(circle at center, transparent 35%, rgba(6, 2, 3, 0.85) 85%, #050102 100%);
     }
 
     .editorial-italic {
@@ -162,8 +162,8 @@
       font-style: italic;
     }
 
-    .glow-emerald {
-      box-shadow: 0 0 55px -10px rgba(16, 185, 129, 0.35), 0 25px 50px -12px rgba(0, 0, 0, 0.95);
+    .glow-red {
+      box-shadow: 0 0 60px -10px rgba(220, 38, 38, 0.42), 0 25px 50px -12px rgba(0, 0, 0, 0.95);
     }
 
     .glow-amber {
@@ -172,115 +172,92 @@
 
   </style>
 </head>
-<body class="h-full cinematic-bg cinematic-grain text-zinc-100 flex flex-col font-sans selection:bg-emerald-500 selection:text-black overflow-x-hidden">
+<body class="h-full cinematic-bg cinematic-grain text-zinc-100 flex flex-col font-sans selection:bg-red-600 selection:text-white overflow-x-hidden">
 
   <!-- ========================================== -->
   <!-- VISTA 1: CINEMATIC HOME & COLLECTIONS VIEW -->
   <!-- ========================================== -->
-  <div id="library-view" class="relative min-h-full flex flex-col pb-40 md:pb-16" style="padding-bottom: calc(150px + env(safe-area-inset-bottom, 24px));">
+  <div id="library-view" class="relative min-h-full flex flex-col justify-between pb-12">
 
-    <!-- Dynamic Cinematic Ambient Backdrop (Changes smoothly with active carousel cover) -->
+    <!-- Dynamic Cinematic Ambient Backdrop (Red glow + active cover) -->
     <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-      <div id="cinematic-backdrop-img" class="absolute inset-0 bg-cover bg-center opacity-25 blur-[90px] scale-125 transition-all duration-1000 ease-out"></div>
+      <div id="cinematic-backdrop-img" class="absolute inset-0 bg-cover bg-center opacity-25 blur-[95px] scale-125 transition-all duration-1000 ease-out"></div>
       <div class="absolute inset-0 cinematic-vignette"></div>
-      <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-[#020504]"></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-[#050102]"></div>
     </div>
 
-    <!-- Top Cinematic Editorial Header (Inspired by Reference Image) -->
+    <!-- Minimalist Cinematic Header -->
     <header class="sticky top-0 z-30 bg-black/65 backdrop-blur-xl border-b border-white/[0.07] safe-top">
       <!-- Micro Editorial Metadata Bar -->
       <div class="max-w-7xl mx-auto px-4 sm:px-8 pt-2 pb-1.5 border-b border-white/[0.05] flex items-center justify-between text-[10px] font-mono tracking-[0.25em] text-zinc-400 uppercase">
         <span class="flex items-center gap-1.5">
-          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></span>
           <span>NOV 2026 // ARCHIVE</span>
         </span>
         <span class="hidden sm:inline text-zinc-300 font-semibold tracking-[0.3em]">@PANELVAULT • CINEMATIC EDITION</span>
         <span>COLECCIÓN DIGITAL</span>
       </div>
 
-      <!-- Main Navigation Row -->
-      <div class="max-w-7xl mx-auto px-4 sm:px-8 h-14 sm:h-16 flex items-center justify-between gap-3">
+      <!-- Main Navigation Row (Clean: Brand + Search Only) -->
+      <div class="max-w-7xl mx-auto px-4 sm:px-8 h-14 sm:h-16 flex items-center justify-between gap-4">
         <!-- Brand / Logo -->
         <div class="flex items-center gap-3 cursor-pointer" id="brand-logo-home">
-          <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-emerald-400 via-teal-500 to-amber-400 p-[1px] shadow-lg shadow-emerald-500/20 shrink-0">
+          <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-red-500 via-rose-600 to-red-900 p-[1px] shadow-lg shadow-red-600/25 shrink-0">
             <div class="w-full h-full bg-zinc-950 rounded-[11px] flex items-center justify-center text-white">
-              <i data-lucide="film" class="w-4 h-4 sm:w-5 sm:h-5 text-emerald-400"></i>
+              <i data-lucide="film" class="w-4 h-4 sm:w-5 sm:h-5 text-red-500"></i>
             </div>
           </div>
           <div>
             <div class="flex items-center gap-2">
               <span class="font-extrabold text-base sm:text-xl tracking-[0.14em] text-white font-comic uppercase">PANELVAULT</span>
-              <span class="hidden lg:inline-block px-2 py-0.5 text-[9px] font-mono uppercase tracking-widest bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 rounded-full">Cinema UI</span>
             </div>
-            <p class="hidden sm:block text-[11px] text-zinc-400 editorial-italic tracking-wide">The Personal Graphic Novel &amp; Manga Sanctuary</p>
+            <p class="hidden sm:block text-[11px] text-zinc-400 editorial-italic tracking-wide">Cinematic Comic &amp; Manga Sanctuary</p>
           </div>
         </div>
 
-        <!-- Search Bar (Desktop) -->
-        <div class="hidden md:flex flex-1 max-w-md items-center relative">
+        <!-- Clean Search Bar -->
+        <div class="flex-1 max-w-xs sm:max-w-md flex items-center relative">
           <i data-lucide="search" class="w-4 h-4 text-zinc-400 absolute left-3.5 pointer-events-none"></i>
-          <input type="text" id="search-input" placeholder="Buscar colección, saga (ej. Batman Absolute) o capítulo..." 
-                 class="w-full bg-zinc-900/75 border border-white/10 rounded-full pl-10 pr-9 py-2 text-xs sm:text-sm text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-emerald-400/70 focus:ring-1 focus:ring-emerald-400/40 transition-all backdrop-blur">
+          <input type="text" id="search-input" placeholder="Buscar colección o capítulo..." 
+                 class="w-full bg-zinc-900/75 border border-white/10 rounded-full pl-10 pr-9 py-1.5 sm:py-2 text-xs sm:text-sm text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-red-500/70 focus:ring-1 focus:ring-red-500/40 transition-all backdrop-blur">
           <button id="search-clear-btn" class="hidden absolute right-3 text-zinc-400 hover:text-white" title="Limpiar búsqueda">
             <i data-lucide="x" class="w-4 h-4"></i>
           </button>
-        </div>
-
-        <!-- Right Action Controls -->
-        <div class="flex items-center gap-2 sm:gap-2.5">
-          <button id="btn-shortcuts" class="px-3 py-2 text-xs font-mono uppercase tracking-wider text-zinc-300 hover:text-white bg-zinc-900/80 hover:bg-zinc-800 rounded-full border border-white/10 transition flex items-center gap-1.5 active:scale-95" title="Atajos de teclado y gestos">
-            <i data-lucide="keyboard" class="w-3.5 h-3.5 text-emerald-400"></i>
-            <span class="hidden sm:inline">Atajos</span>
-          </button>
-
-          <button id="btn-open-upload-modal" class="px-4 sm:px-5 py-2 text-xs font-mono uppercase tracking-widest font-bold bg-white hover:bg-emerald-400 text-black rounded-full shadow-lg shadow-white/10 hover:shadow-emerald-500/30 transition-all flex items-center gap-1.5 active:scale-95">
-            <i data-lucide="plus" class="w-4 h-4 stroke-[2.5]"></i>
-            <span>Subir Cómic</span>
-          </button>
-        </div>
-      </div>
-
-      <!-- Mobile Search Input -->
-      <div class="md:hidden px-4 pb-2.5 pt-1">
-        <div class="flex items-center relative">
-          <i data-lucide="search" class="w-3.5 h-3.5 text-zinc-400 absolute left-3.5 pointer-events-none"></i>
-          <input type="text" id="mobile-search-input" placeholder="Buscar saga o capítulo..." 
-                 class="w-full bg-zinc-900/90 border border-white/10 rounded-full pl-9 pr-8 py-1.5 text-xs text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-emerald-400">
         </div>
       </div>
     </header>
 
     <!-- Main Content Container -->
-    <main class="relative z-10 flex-1 max-w-7xl mx-auto px-4 sm:px-8 pt-5 sm:pt-8 pb-32 w-full flex flex-col gap-8 sm:gap-10">
+    <main class="relative z-10 flex-1 max-w-7xl mx-auto px-4 sm:px-8 pt-6 sm:pt-10 pb-12 w-full flex flex-col justify-between gap-10">
 
       <!-- ======================================================== -->
-      <!-- 1. CINEMATIC HERO 3D CAROUSEL (SAGAS / COLECCIONES)      -->
+      <!-- 1. CARRUSEL CINEMÁTICO 3D (PÁGINA PRINCIPAL)             -->
       <!-- ======================================================== -->
-      <section id="hero-carousel-section" class="relative w-full flex flex-col items-center">
+      <section id="hero-carousel-section" class="relative w-full flex flex-col items-center my-auto">
         
         <!-- Cinematic Headline & Frame Counter -->
-        <div class="w-full flex flex-col sm:flex-row items-center justify-between gap-2 mb-4 sm:mb-6 text-center sm:text-left">
+        <div class="w-full flex flex-col sm:flex-row items-center justify-between gap-3 mb-6 sm:mb-8 text-center sm:text-left">
           <div>
-            <div class="flex items-center justify-center sm:justify-start gap-2 text-[10px] sm:text-xs font-mono uppercase tracking-[0.25em] text-emerald-400 mb-1">
-              <span>01 // COLECCIONES EN CARTELERA</span>
-              <span class="w-8 h-[1px] bg-emerald-500/40"></span>
+            <div class="flex items-center justify-center sm:justify-start gap-2 text-[10px] sm:text-xs font-mono uppercase tracking-[0.25em] text-red-400 mb-1">
+              <span>01 // COLECCIONES SUBIDAS</span>
+              <span class="w-8 h-[1px] bg-red-500/50"></span>
             </div>
             <h1 class="text-2xl sm:text-4xl md:text-5xl font-extrabold tracking-[0.06em] text-white font-comic uppercase leading-none">
-              UNIVERSO <span class="editorial-italic font-normal text-emerald-300 lowercase tracking-normal text-3xl sm:text-5xl">cinemático</span>
+              UNIVERSO <span class="editorial-italic font-normal text-red-400 lowercase tracking-normal text-3xl sm:text-5xl">cinemático</span>
             </h1>
           </div>
 
           <!-- Frame Indicator & Slide Controls -->
           <div class="flex items-center gap-4">
             <div class="text-right hidden sm:block">
-              <span class="block text-[10px] font-mono uppercase tracking-[0.2em] text-zinc-500">COLECCIÓN ACTIVA</span>
+              <span class="block text-[10px] font-mono uppercase tracking-[0.2em] text-zinc-500">COLECCIÓN</span>
               <span id="carousel-counter" class="text-xs sm:text-sm font-mono font-bold text-white tracking-widest">01 / 01</span>
             </div>
             <div class="flex items-center gap-2">
-              <button id="btn-carousel-prev" class="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-zinc-900/80 hover:bg-white text-zinc-200 hover:text-black border border-white/15 flex items-center justify-center transition-all active:scale-90 shadow-lg" title="Deslizar a la izquierda (Anterior)">
+              <button id="btn-carousel-prev" class="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-zinc-900/80 hover:bg-red-600 text-zinc-200 hover:text-white border border-white/15 flex items-center justify-center transition-all active:scale-90 shadow-lg" title="Anterior">
                 <i data-lucide="arrow-left" class="w-4 h-4 sm:w-5 sm:h-5"></i>
               </button>
-              <button id="btn-carousel-next" class="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-zinc-900/80 hover:bg-white text-zinc-200 hover:text-black border border-white/15 flex items-center justify-center transition-all active:scale-90 shadow-lg" title="Deslizar a la derecha (Siguiente)">
+              <button id="btn-carousel-next" class="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-zinc-900/80 hover:bg-red-600 text-zinc-200 hover:text-white border border-white/15 flex items-center justify-center transition-all active:scale-90 shadow-lg" title="Siguiente">
                 <i data-lucide="arrow-right" class="w-4 h-4 sm:w-5 sm:h-5"></i>
               </button>
             </div>
@@ -288,123 +265,69 @@
         </div>
 
         <!-- 3D Carousel Stage -->
-        <div id="carousel-viewport" class="relative w-full h-[380px] sm:h-[470px] flex items-center justify-center carousel-perspective overflow-visible select-none cursor-grab active:cursor-grabbing my-1">
+        <div id="carousel-viewport" class="relative w-full h-[390px] sm:h-[480px] flex items-center justify-center carousel-perspective overflow-visible select-none cursor-grab active:cursor-grabbing my-2">
           <!-- Cards dynamically injected here via renderHeroCarousel() -->
           <div id="carousel-track" class="relative w-full h-full flex items-center justify-center"></div>
         </div>
 
-        <!-- Active Collection Cinematic Spotlight Info Bar -->
-        <div id="carousel-active-info" class="relative z-20 mt-3 sm:mt-5 flex flex-col items-center text-center max-w-xl mx-auto px-4">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.06] border border-white/10 text-[10px] sm:text-xs font-mono uppercase tracking-[0.2em] text-amber-300 mb-2">
+        <!-- Active Collection Spotlight Info (Minimalist, clicking cover opens collection) -->
+        <div id="carousel-active-info" class="relative z-20 mt-4 sm:mt-6 flex flex-col items-center text-center max-w-xl mx-auto px-4">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-red-500/10 border border-red-500/30 text-[10px] sm:text-xs font-mono uppercase tracking-[0.2em] text-red-300 mb-2">
             <span id="active-series-genre">SUPERHÉROES</span>
             <span>•</span>
             <span id="active-series-count">1 CAPÍTULO</span>
           </div>
-          <h2 id="active-series-title" class="text-xl sm:text-3xl font-bold text-white tracking-wide font-comic uppercase mb-1.5 line-clamp-1">
+          <h2 id="active-series-title" class="text-xl sm:text-3xl font-bold text-white tracking-wide font-comic uppercase mb-1 line-clamp-1 cursor-pointer hover:text-red-400 transition">
             Cargando Colección...
           </h2>
-          <p class="text-xs sm:text-sm text-zinc-400 editorial-italic mb-4">
-            Haz clic en la portada central para abrir todos los capítulos subidos de esta colección
+          <p class="text-xs sm:text-sm text-zinc-400 editorial-italic">
+            Haz clic en la portada para entrar a la lista de capítulos completos de esta colección
           </p>
-          <div class="flex items-center gap-3">
-            <button id="btn-open-active-collection" class="px-6 py-2.5 rounded-full bg-gradient-to-r from-emerald-400 to-teal-300 hover:from-white hover:to-white text-zinc-950 font-mono text-xs font-bold uppercase tracking-[0.18em] transition-all shadow-xl shadow-emerald-500/20 flex items-center gap-2 active:scale-95">
-              <i data-lucide="layers" class="w-4 h-4 stroke-[2.5]"></i>
-              <span>Explorar Colección</span>
-            </button>
-            <button id="btn-read-latest-active" class="px-5 py-2.5 rounded-full bg-zinc-900/90 hover:bg-zinc-800 text-white border border-white/15 font-mono text-xs uppercase tracking-[0.15em] transition-all flex items-center gap-2 active:scale-95">
-              <i data-lucide="play" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
-              <span>Leer Ahora</span>
-            </button>
-          </div>
 
           <!-- Pagination Dots + Desliza Hint -->
-          <div class="mt-5 flex items-center gap-4">
+          <div class="mt-4 flex items-center gap-4">
             <div id="carousel-dots" class="flex items-center gap-1.5"></div>
             <span class="text-[10px] font-mono uppercase tracking-[0.25em] text-zinc-500 hidden sm:flex items-center gap-1">
               <span>DESLIZA</span>
-              <i data-lucide="move-right" class="w-3.5 h-3.5 text-emerald-400"></i>
+              <i data-lucide="move-right" class="w-3.5 h-3.5 text-red-500"></i>
             </span>
           </div>
         </div>
       </section>
 
       <!-- ======================================================== -->
-      <!-- 2. BARRA CENTRAL: ESTANTERÍA | AÑADIR CÓMIC | GALERÍA    -->
+      <!-- 2. VISTA DE CAPÍTULOS DE LA COLECCIÓN (AL DAR CLIC)      -->
       <!-- ======================================================== -->
-      <section class="w-full flex flex-col items-center justify-center pt-2">
-        <div class="inline-flex items-center bg-zinc-950/90 border border-white/10 rounded-full p-1.5 shadow-2xl backdrop-blur-xl max-w-full overflow-x-auto gap-1.5 sm:gap-2 touch-scroll">
-          
-          <!-- SECCIÓN 1: ESTANTERÍA PERSONAL -->
-          <button id="tab-bookshelf" class="section-tab active px-4 sm:px-6 py-2.5 rounded-full text-xs font-mono uppercase tracking-wider font-bold transition-all flex items-center gap-2 bg-white text-black shadow-md shrink-0">
-            <i data-lucide="book-marked" class="w-4 h-4 stroke-[2.2]"></i>
-            <span class="whitespace-nowrap">Estantería personal</span>
-            <span id="badge-bookshelf-count" class="px-2 py-0.5 rounded-full text-[10px] font-black bg-black/15 text-black">0</span>
-          </button>
-
-          <!-- BOTÓN CENTRAL: AÑADIR CÓMIC -->
-          <button id="btn-add-comic-center" class="px-5 sm:px-7 py-2.5 rounded-full text-xs font-mono font-bold uppercase tracking-widest bg-gradient-to-r from-amber-400 via-amber-300 to-emerald-400 hover:brightness-110 text-zinc-950 shadow-lg shadow-amber-500/20 transition-all active:scale-95 flex items-center gap-2 shrink-0">
-            <i data-lucide="plus-circle" class="w-4 h-4 stroke-[2.5] text-zinc-950"></i>
-            <span class="whitespace-nowrap">Añadir cómic</span>
-          </button>
-
-          <!-- SECCIÓN 2: GALERÍA (TODOS LOS CÓMICS) -->
-          <button id="tab-gallery" class="section-tab px-4 sm:px-6 py-2.5 rounded-full text-xs font-mono uppercase tracking-wider font-bold transition-all flex items-center gap-2 text-zinc-400 hover:text-white hover:bg-white/5 shrink-0">
-            <i data-lucide="layout-grid" class="w-4 h-4"></i>
-            <span class="whitespace-nowrap">Galería</span>
-            <span id="badge-gallery-count" class="px-2 py-0.5 rounded-full text-[10px] font-black bg-zinc-800 text-zinc-300">0</span>
-          </button>
-
-        </div>
-      </section>
-
-      <!-- ======================================================== -->
-      <!-- 3. VISTA DE COLECCIÓN / CAPÍTULOS (CUANDO DAS CLIC EN CARRUSEL) -->
-      <!-- ======================================================== -->
-      <section id="collection-detail-view" class="hidden w-full rounded-3xl border border-white/15 bg-zinc-950/90 backdrop-blur-2xl overflow-hidden shadow-2xl transition-all">
+      <section id="collection-detail-view" class="hidden w-full rounded-3xl border border-red-500/20 bg-zinc-950/90 backdrop-blur-2xl overflow-hidden shadow-2xl transition-all my-auto">
         <!-- Collection Hero Banner -->
         <div class="relative p-6 sm:p-10 border-b border-white/10 overflow-hidden">
           <div id="collection-banner-bg" class="absolute inset-0 bg-cover bg-center opacity-20 blur-2xl scale-110 pointer-events-none"></div>
           <div class="absolute inset-0 bg-gradient-to-r from-zinc-950 via-zinc-950/90 to-zinc-950/60 pointer-events-none"></div>
 
-          <div class="relative z-10 flex flex-col md:flex-row items-center md:items-end justify-between gap-6">
-            <div class="flex flex-col sm:flex-row items-center sm:items-end gap-5 text-center sm:text-left">
-              <img id="collection-Poster-img" src="" alt="Portada de Colección" class="w-28 sm:w-36 aspect-[3/4] object-cover rounded-xl border border-white/20 shadow-2xl shrink-0">
-              <div>
-                <button id="btn-back-from-collection" class="mb-3 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 hover:bg-white hover:text-black text-zinc-200 text-xs font-mono uppercase tracking-widest transition">
-                  <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i>
-                  <span>Volver a todas las colecciones</span>
-                </button>
-                <div class="flex items-center justify-center sm:justify-start gap-2 text-[10px] font-mono uppercase tracking-[0.25em] text-emerald-400 mb-1">
-                  <span id="collection-detail-genre">COLECCIÓN</span>
-                  <span>•</span>
-                  <span id="collection-detail-count">0 CAPÍTULOS SUBIDOS</span>
-                </div>
-                <h2 id="collection-detail-title" class="text-2xl sm:text-4xl font-extrabold text-white font-comic uppercase tracking-wide">
-                  Batman Absolute
-                </h2>
-                <p class="text-xs sm:text-sm text-zinc-400 editorial-italic mt-1">
-                  Lista completa de capítulos y volúmenes disponibles en tu archivo
-                </p>
-              </div>
-            </div>
-
-            <div class="flex items-center gap-3 shrink-0">
-              <button id="btn-add-chapter-to-collection" class="px-5 py-2.5 rounded-full bg-amber-400 hover:bg-amber-300 text-zinc-950 font-mono text-xs font-bold uppercase tracking-wider transition flex items-center gap-2 shadow-lg shadow-amber-500/20">
-                <i data-lucide="file-plus" class="w-4 h-4 stroke-[2.5]"></i>
-                <span>Subir Capítulo a esta Saga</span>
+          <div class="relative z-10 flex flex-col sm:flex-row items-center sm:items-end gap-6 text-center sm:text-left">
+            <img id="collection-Poster-img" src="" alt="Portada de Colección" class="w-28 sm:w-36 aspect-[3/4] object-cover rounded-xl border border-red-500/30 shadow-2xl shrink-0">
+            <div class="flex-1">
+              <button id="btn-back-from-collection" class="mb-3 inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 hover:bg-red-600 text-zinc-200 hover:text-white text-xs font-mono uppercase tracking-widest transition">
+                <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i>
+                <span>Volver al carrusel principal</span>
               </button>
+              <div class="flex items-center justify-center sm:justify-start gap-2 text-[10px] font-mono uppercase tracking-[0.25em] text-red-400 mb-1">
+                <span id="collection-detail-genre">COLECCIÓN</span>
+                <span>•</span>
+                <span id="collection-detail-count">0 CAPÍTULOS SUBIDOS</span>
+              </div>
+              <h2 id="collection-detail-title" class="text-2xl sm:text-4xl font-extrabold text-white font-comic uppercase tracking-wide">
+                Colección
+              </h2>
+              <p class="text-xs sm:text-sm text-zinc-400 editorial-italic mt-1">
+                Selecciona cualquier capítulo para abrirlo en el lector Ultra-HD
+              </p>
             </div>
           </div>
         </div>
 
-        <!-- Chapters List / Grid inside Collection -->
+        <!-- Chapters Grid inside Collection -->
         <div class="p-5 sm:p-8">
-          <div class="flex items-center justify-between mb-4">
-            <h3 class="text-xs sm:text-sm font-mono uppercase tracking-[0.2em] text-zinc-400 flex items-center gap-2">
-              <i data-lucide="list-video" class="w-4 h-4 text-emerald-400"></i>
-              <span>Capítulos Completos Subidos</span>
-            </h3>
-          </div>
           <div id="collection-chapters-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-6">
             <!-- Chapters of selected collection rendered here -->
           </div>
@@ -412,100 +335,19 @@
       </section>
 
       <!-- ======================================================== -->
-      <!-- 4. ESTANTERÍA PERSONAL Y GALERÍA GENERAL                 -->
+      <!-- 3. ÚNICO BOTÓN DE AGREGAR CÓMIC (HASTA ABAJO)            -->
       <!-- ======================================================== -->
-      <section id="main-grid-section">
-        <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-5 pb-3 border-b border-white/10 gap-3">
-          <div>
-            <div class="text-[10px] font-mono uppercase tracking-[0.25em] text-emerald-400 mb-1">02 // ARCHIVO PERSONAL</div>
-            <h2 id="section-title" class="text-lg sm:text-2xl font-extrabold text-white flex items-center gap-2.5 font-comic uppercase tracking-wider">
-              <i id="section-icon" data-lucide="book-marked" class="w-5 h-5 text-amber-400"></i>
-              <span id="section-heading-text">Estantería Personal</span>
-              <span id="grid-status-badge" class="text-xs font-mono font-normal text-zinc-400 ml-2"></span>
-            </h2>
-            <p id="section-subtitle" class="text-xs sm:text-sm text-zinc-400 editorial-italic mt-0.5">
-              Cómics en lectura activa o destacados en tu estante
-            </p>
-          </div>
-
-          <!-- Controls: Collection Filter Pill, Sort & Export -->
-          <div class="flex flex-wrap items-center gap-2">
-            <!-- Quick Series Filter Dropdown -->
-            <div class="flex items-center gap-1.5 text-xs text-zinc-400">
-              <i data-lucide="folder-kanban" class="w-3.5 h-3.5 text-emerald-400 hidden sm:inline"></i>
-              <select id="series-filter-select" class="bg-zinc-900/90 border border-white/10 text-zinc-200 rounded-full px-3 py-1.5 focus:outline-none focus:border-emerald-400 text-xs font-mono">
-                <option value="all">Todas las colecciones</option>
-              </select>
-            </div>
-
-            <div class="flex items-center gap-1.5 text-xs text-zinc-400">
-              <select id="sort-select" class="bg-zinc-900/90 border border-white/10 text-zinc-200 rounded-full px-3 py-1.5 focus:outline-none focus:border-emerald-400 text-xs font-mono">
-                <option value="recent">Recientes</option>
-                <option value="title-asc">Título (A-Z)</option>
-                <option value="title-desc">Título (Z-A)</option>
-                <option value="pages-desc">Más páginas</option>
-                <option value="progress-desc">Mayor progreso</option>
-              </select>
-            </div>
-            
-            <button id="btn-export-library" class="text-xs font-mono uppercase tracking-wider text-zinc-300 hover:text-white flex items-center gap-1.5 bg-zinc-900/80 hover:bg-zinc-800 px-3 py-1.5 rounded-full transition border border-white/10" title="Exportar lista de cómics">
-              <i data-lucide="download" class="w-3.5 h-3.5 text-emerald-400"></i>
-              <span class="hidden md:inline">Exportar lista</span>
-            </button>
-          </div>
-        </div>
-
-        <!-- Grid Container -->
-        <div id="comics-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 sm:gap-6">
-          <!-- Dynamic comic cards injected here -->
-        </div>
-
-        <!-- Empty State -->
-        <div id="empty-state" class="hidden flex-col items-center justify-center py-16 sm:py-24 px-4 text-center rounded-3xl border border-white/5 bg-zinc-950/50 backdrop-blur">
-          <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-zinc-900 border border-white/10 text-emerald-400 flex items-center justify-center mb-4 shadow-2xl">
-            <i id="empty-icon" data-lucide="book-marked" class="w-8 h-8 sm:w-9 sm:h-9"></i>
-          </div>
-          <h3 id="empty-title" class="text-base sm:text-xl font-bold text-white font-comic uppercase tracking-wider mb-1.5">Tu estantería personal está vacía</h3>
-          <p id="empty-desc" class="text-xs sm:text-sm text-zinc-400 editorial-italic max-w-sm mb-6">Aquí aparecerán los cómics que estés leyendo o agregues a tu estantería.</p>
-          <button id="empty-action-btn" class="px-6 py-2.5 bg-white hover:bg-emerald-400 text-black rounded-full text-xs font-mono font-bold uppercase tracking-widest transition shadow-xl flex items-center gap-2">
-            <i data-lucide="plus-circle" class="w-4 h-4 stroke-[2.5]"></i>
-            <span id="empty-action-text">Añadir cómic</span>
-          </button>
-        </div>
+      <section class="w-full pt-4 pb-2 flex flex-col items-center justify-center border-t border-white/[0.07]">
+        <p class="text-xs text-zinc-400 editorial-italic mb-3 text-center">
+          Sube nuevos capítulos en PDF creando una colección nueva o adjuntándolos a una ya creada
+        </p>
+        <button id="btn-open-upload-modal" class="px-8 py-3.5 rounded-full bg-gradient-to-r from-red-600 via-red-500 to-rose-600 hover:from-red-500 hover:to-red-400 text-white font-mono text-xs sm:text-sm font-bold uppercase tracking-[0.2em] shadow-2xl shadow-red-600/35 border border-red-400/40 transition-all active:scale-95 flex items-center gap-2.5">
+          <i data-lucide="plus-circle" class="w-5 h-5 stroke-[2.5]"></i>
+          <span>Agregar Cómic</span>
+        </button>
       </section>
 
     </main>
-
-    <!-- Mobile Bottom Navigation Bar -->
-    <nav class="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-black/90 backdrop-blur-xl border-t border-white/10 px-8 py-2 flex items-center justify-between safe-bottom">
-      <button id="btn-mobile-nav-shelf" class="flex flex-col items-center gap-1 text-emerald-400 text-[10px] font-mono uppercase tracking-wider font-bold py-1">
-        <i data-lucide="book-marked" class="w-5 h-5"></i>
-        <span>Estantería</span>
-      </button>
-
-      <!-- Center Upload Button on mobile -->
-      <button id="btn-mobile-nav-upload" class="flex flex-col items-center justify-center w-12 h-12 rounded-full bg-gradient-to-tr from-emerald-400 to-amber-300 text-black -mt-6 shadow-xl shadow-emerald-500/30 active:scale-95 transition border-2 border-black" title="Añadir Cómic">
-        <i data-lucide="plus" class="w-6 h-6 stroke-[3]"></i>
-      </button>
-
-      <button id="btn-mobile-nav-gallery" class="flex flex-col items-center gap-1 text-zinc-400 hover:text-white text-[10px] font-mono uppercase tracking-wider font-semibold py-1">
-        <i data-lucide="layout-grid" class="w-5 h-5"></i>
-        <span>Galería</span>
-      </button>
-    </nav>
-
-    <!-- Cinematic Footer (Desktop) -->
-    <footer class="hidden md:block mt-auto border-t border-white/[0.07] bg-black/60 backdrop-blur py-6 text-xs text-zinc-500 relative z-10">
-      <div class="max-w-7xl mx-auto px-8 flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-[11px] uppercase tracking-widest">
-        <div class="flex items-center gap-2 text-zinc-400">
-          <i data-lucide="shield-check" class="w-4 h-4 text-emerald-400"></i>
-          <span>ALMACENAMIENTO PERSISTENTE INDEXEDDB • ULTRA-HD RETINA ENGINE</span>
-        </div>
-        <div class="text-zinc-500">
-          <span>PANELVAULT // CINEMATIC WEB EXPERIENCE</span>
-        </div>
-      </div>
-    </footer>
   </div>
 
   <!-- ========================================== -->
@@ -806,165 +648,94 @@
   </div>
 
   <!-- ========================================== -->
-  <!-- MODAL 1: SUBIR CÓMIC Y ASIGNAR COLECCIÓN   -->
+  <!-- MODAL 1: AGREGAR CÓMIC (NUEVA O EXISTENTE) -->
   <!-- ========================================== -->
   <div id="modal-upload" class="hidden fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-3 sm:p-4">
-    <div class="bg-zinc-950 border border-white/15 rounded-3xl max-w-lg w-full p-5 sm:p-7 shadow-2xl relative">
+    <div class="bg-zinc-950 border border-red-500/25 rounded-3xl max-w-lg w-full p-5 sm:p-7 shadow-2xl relative">
       <button id="btn-close-upload-modal" class="absolute top-5 right-5 text-zinc-400 hover:text-white p-1.5 rounded-full hover:bg-white/10 transition">
         <i data-lucide="x" class="w-5 h-5"></i>
       </button>
 
       <div class="flex items-center gap-3.5 mb-5">
-        <div class="w-11 h-11 rounded-2xl bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 flex items-center justify-center shrink-0">
-          <i data-lucide="upload" class="w-5 h-5"></i>
+        <div class="w-11 h-11 rounded-2xl bg-red-500/15 border border-red-500/30 text-red-400 flex items-center justify-center shrink-0">
+          <i data-lucide="folder-plus" class="w-5 h-5"></i>
         </div>
         <div>
-          <span class="text-[10px] font-mono uppercase tracking-[0.2em] text-emerald-400 block">NUEVO ARCHIVO</span>
-          <h3 class="text-base sm:text-xl font-extrabold text-white font-comic uppercase tracking-wide">Subir Cómic a tu Colección</h3>
+          <span class="text-[10px] font-mono uppercase tracking-[0.2em] text-red-400 block">GESTIÓN DE COLECCIÓN</span>
+          <h3 class="text-base sm:text-xl font-extrabold text-white font-comic uppercase tracking-wide">Agregar Cómic PDF</h3>
         </div>
       </div>
 
-      <!-- Collection / Saga Assignment -->
-      <div class="mb-4">
-        <label class="block text-xs font-mono uppercase tracking-wider text-zinc-300 mb-1.5">
-          Colección / Saga (ej. <span class="text-emerald-400">Batman Absolute</span>, <span class="text-amber-300">Berserk</span>):
-        </label>
-        <div class="relative">
-          <i data-lucide="layers" class="w-4 h-4 text-zinc-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none"></i>
-          <input type="text" id="upload-series-input" list="existing-series-datalist" placeholder="Dejar vacío para detectar automáticamente del nombre del archivo..." 
-                 class="w-full bg-zinc-900 border border-white/15 rounded-xl pl-10 pr-4 py-2.5 text-xs sm:text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-emerald-400 transition">
-          <datalist id="existing-series-datalist"></datalist>
+      <!-- Selector: Adjuntar a Colección ya creada o crear una nueva -->
+      <div class="space-y-3.5 mb-5 bg-zinc-900/60 p-4 rounded-2xl border border-white/10">
+        <div>
+          <label class="block text-xs font-mono uppercase tracking-wider text-zinc-300 mb-1.5">
+            1. ¿Dónde deseas guardar este cómic?
+          </label>
+          <select id="upload-collection-mode-select" class="w-full bg-zinc-950 border border-white/15 rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-white focus:outline-none focus:border-red-500 transition font-mono">
+            <option value="__NEW__">+ Crear una nueva colección</option>
+          </select>
         </div>
-        <p class="text-[11px] text-zinc-400 editorial-italic mt-1">
-          Todos los cómics de una misma colección se agruparán en una sola portada dentro del carrusel principal.
-        </p>
+
+        <div id="new-collection-input-wrapper">
+          <label class="block text-xs font-mono uppercase tracking-wider text-zinc-300 mb-1.5">
+            Nombre de la nueva colección (ej. <span class="text-red-400">Batman Absolute</span>):
+          </label>
+          <input type="text" id="upload-series-input" placeholder="Escribe el nombre de la colección..." 
+                 class="w-full bg-zinc-950 border border-white/15 rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-red-500 transition">
+        </div>
       </div>
 
-      <!-- Optional Tag Selection for upload -->
+      <!-- Categoría / Género -->
       <div class="mb-4">
-        <label class="block text-xs font-mono uppercase tracking-wider text-zinc-300 mb-2">Categoría / Género:</label>
+        <label class="block text-xs font-mono uppercase tracking-wider text-zinc-300 mb-2">Categoría:</label>
         <div class="grid grid-cols-3 gap-2">
-          <label class="flex items-center gap-2 p-2.5 bg-zinc-900 border border-white/10 rounded-xl cursor-pointer hover:border-emerald-400 text-xs transition">
-            <input type="radio" name="upload-genre" value="Superhéroes" checked class="accent-emerald-400">
+          <label class="flex items-center gap-2 p-2.5 bg-zinc-900 border border-white/10 rounded-xl cursor-pointer hover:border-red-500 text-xs transition">
+            <input type="radio" name="upload-genre" value="Superhéroes" checked class="accent-red-500">
             <span>Superhéroes</span>
           </label>
-          <label class="flex items-center gap-2 p-2.5 bg-zinc-900 border border-white/10 rounded-xl cursor-pointer hover:border-emerald-400 text-xs transition">
-            <input type="radio" name="upload-genre" value="Sci-Fi" class="accent-emerald-400">
+          <label class="flex items-center gap-2 p-2.5 bg-zinc-900 border border-white/10 rounded-xl cursor-pointer hover:border-red-500 text-xs transition">
+            <input type="radio" name="upload-genre" value="Sci-Fi" class="accent-red-500">
             <span>Sci-Fi</span>
           </label>
-          <label class="flex items-center gap-2 p-2.5 bg-zinc-900 border border-white/10 rounded-xl cursor-pointer hover:border-emerald-400 text-xs transition">
-            <input type="radio" name="upload-genre" value="Manga" class="accent-emerald-400">
+          <label class="flex items-center gap-2 p-2.5 bg-zinc-900 border border-white/10 rounded-xl cursor-pointer hover:border-red-500 text-xs transition">
+            <input type="radio" name="upload-genre" value="Manga" class="accent-red-500">
             <span>Manga</span>
           </label>
         </div>
       </div>
 
       <!-- File Select Dropzone -->
-      <div id="modal-drop-area" class="border-2 border-dashed border-white/15 hover:border-emerald-400 rounded-2xl p-6 sm:p-8 text-center cursor-pointer bg-zinc-900/50 hover:bg-zinc-900 transition mb-4 group active:scale-[0.99]">
+      <div id="modal-drop-area" class="border-2 border-dashed border-white/15 hover:border-red-500 rounded-2xl p-6 text-center cursor-pointer bg-zinc-900/50 hover:bg-zinc-900 transition mb-4 group active:scale-[0.99]">
         <input type="file" id="modal-file-input" accept="application/pdf" multiple class="hidden">
-        <div class="w-12 h-12 rounded-full bg-white/5 group-hover:bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto mb-2.5 transition group-hover:scale-110">
+        <div class="w-12 h-12 rounded-full bg-red-500/10 group-hover:bg-red-500/20 text-red-400 flex items-center justify-center mx-auto mb-2.5 transition group-hover:scale-110">
           <i data-lucide="file-plus" class="w-6 h-6"></i>
         </div>
-        <p class="text-xs sm:text-sm font-bold text-white mb-1 font-mono uppercase tracking-wider">Toca para seleccionar archivos PDF</p>
-        <p class="text-xs text-zinc-400 editorial-italic">Puedes subir varios capítulos completos de una vez</p>
+        <p class="text-xs sm:text-sm font-bold text-white mb-1 font-mono uppercase tracking-wider">Seleccionar archivos PDF</p>
+        <p class="text-xs text-zinc-400 editorial-italic">Toca aquí o arrastra los capítulos en PDF</p>
       </div>
 
       <!-- Upload Progress Container -->
       <div id="upload-progress-container" class="hidden mb-4 bg-zinc-900 rounded-xl p-3.5 border border-white/10">
         <div class="flex items-center justify-between text-xs mb-1.5 font-mono">
-          <span id="upload-status-text" class="font-bold text-emerald-400">Procesando archivo...</span>
+          <span id="upload-status-text" class="font-bold text-red-400">Procesando archivo...</span>
           <span id="upload-percent-text" class="text-zinc-400">0%</span>
         </div>
         <div class="w-full bg-zinc-800 h-2 rounded-full overflow-hidden">
-          <div id="upload-progress-bar" class="bg-gradient-to-r from-emerald-400 to-amber-300 h-full w-0 transition-all duration-300"></div>
+          <div id="upload-progress-bar" class="bg-gradient-to-r from-red-600 to-rose-400 h-full w-0 transition-all duration-300"></div>
         </div>
       </div>
 
-      <div class="flex justify-end gap-2">
+      <div class="flex justify-end">
         <button id="btn-cancel-upload" class="px-5 py-2 text-xs font-mono uppercase tracking-wider font-bold text-zinc-400 hover:text-white bg-zinc-900 rounded-full border border-white/10 transition">
-          Cerrar
+          Cancelar
         </button>
       </div>
     </div>
   </div>
 
   <!-- ========================================== -->
-  <!-- MODAL 2: EDITAR / DETALLES DE CÓMIC        -->
-  <!-- ========================================== -->
-  <div id="modal-comic-details" class="hidden fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-3 sm:p-4">
-    <div class="bg-zinc-950 border border-white/15 rounded-3xl max-w-md w-full p-5 sm:p-7 shadow-2xl relative">
-      <button id="btn-close-details-modal" class="absolute top-5 right-5 text-zinc-400 hover:text-white p-1.5 rounded-full hover:bg-white/10">
-        <i data-lucide="x" class="w-5 h-5"></i>
-      </button>
-
-      <h3 class="text-base sm:text-lg font-extrabold text-white mb-4 flex items-center gap-2 font-comic uppercase tracking-wider">
-        <i data-lucide="edit-3" class="w-5 h-5 text-emerald-400"></i>
-        <span>Editar Capítulo y Colección</span>
-      </h3>
-
-      <div class="space-y-3.5">
-        <input type="hidden" id="edit-comic-id">
-
-        <div>
-          <label class="block text-xs font-mono uppercase tracking-wider text-zinc-400 mb-1">Título del Capítulo</label>
-          <input type="text" id="edit-comic-title" 
-                 class="w-full bg-zinc-900 border border-white/15 rounded-xl px-3.5 py-2 text-xs sm:text-sm text-white focus:outline-none focus:border-emerald-400">
-        </div>
-
-        <div>
-          <label class="block text-xs font-mono uppercase tracking-wider text-zinc-400 mb-1">Colección / Saga (Agrupa en el Carrusel)</label>
-          <input type="text" id="edit-comic-series" list="existing-series-datalist" placeholder="Ej. Batman Absolute"
-                 class="w-full bg-zinc-900 border border-white/15 rounded-xl px-3.5 py-2 text-xs sm:text-sm text-emerald-300 font-semibold focus:outline-none focus:border-emerald-400">
-        </div>
-
-        <div>
-          <label class="block text-xs font-mono uppercase tracking-wider text-zinc-400 mb-1">Categoría / Género</label>
-          <select id="edit-comic-genre" class="w-full bg-zinc-900 border border-white/15 rounded-xl px-3.5 py-2 text-xs sm:text-sm text-white focus:outline-none focus:border-emerald-400">
-            <option value="Superhéroes">Superhéroes</option>
-            <option value="Sci-Fi">Sci-Fi / Cyberpunk</option>
-            <option value="Manga">Manga</option>
-            <option value="Fantasía">Fantasía / Aventura</option>
-            <option value="Novela Gráfica">Novela Gráfica</option>
-          </select>
-        </div>
-
-        <div class="bg-zinc-900/80 p-3.5 rounded-xl border border-white/10 text-xs space-y-1.5 font-mono">
-          <div class="flex justify-between text-zinc-300">
-            <span class="text-zinc-500">Total de páginas:</span>
-            <span id="edit-comic-pages" class="font-bold">--</span>
-          </div>
-          <div class="flex justify-between text-zinc-300">
-            <span class="text-zinc-500">Progreso actual:</span>
-            <span id="edit-comic-progress" class="font-bold text-emerald-400">--</span>
-          </div>
-          <div class="flex justify-between text-zinc-300">
-            <span class="text-zinc-500">Tamaño del archivo:</span>
-            <span id="edit-comic-size" class="font-bold">--</span>
-          </div>
-        </div>
-
-        <div class="pt-3 flex items-center justify-between gap-2">
-          <button id="btn-reset-progress" class="text-xs text-amber-400 hover:text-amber-300 font-mono flex items-center gap-1">
-            <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i>
-            <span>Reiniciar progreso</span>
-          </button>
-          
-          <div class="flex items-center gap-2">
-            <button id="btn-modal-delete-comic" type="button" class="px-3.5 py-2 bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 border border-rose-500/30 font-mono font-bold text-xs rounded-full transition flex items-center gap-1.5 active:scale-95">
-              <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
-              <span>Eliminar Cómic</span>
-            </button>
-            <button id="btn-save-comic-details" class="px-5 py-2 bg-white hover:bg-emerald-400 text-black font-mono font-bold text-xs uppercase tracking-wider rounded-full transition">
-              Guardar Cambios
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ========================================== -->
-  <!-- MODAL 3: CONFIRMACIÓN DE ELIMINACIÓN       -->
+  <!-- MODAL 2: CONFIRMACIÓN DE ELIMINACIÓN       -->
   <!-- ========================================== -->
   <div id="modal-confirm-delete" class="hidden fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
     <div class="bg-zinc-950 border border-rose-500/30 rounded-3xl max-w-sm w-full p-6 shadow-2xl text-center">
@@ -979,61 +750,8 @@
         <button id="btn-cancel-confirm-delete" class="flex-1 py-2.5 rounded-full bg-zinc-900 hover:bg-zinc-800 text-zinc-300 text-xs font-mono uppercase tracking-wider font-bold border border-white/10 transition">
           Cancelar
         </button>
-        <button id="btn-accept-confirm-delete" class="flex-1 py-2.5 rounded-full bg-rose-500 hover:bg-rose-400 text-white text-xs font-mono uppercase tracking-wider font-bold shadow-lg shadow-rose-500/25 transition">
+        <button id="btn-accept-confirm-delete" class="flex-1 py-2.5 rounded-full bg-red-600 hover:bg-red-500 text-white text-xs font-mono uppercase tracking-wider font-bold shadow-lg shadow-red-600/25 transition">
           Sí, borrar
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- ========================================== -->
-  <!-- MODAL 4: GESTOS Y ATAJOS                   -->
-  <!-- ========================================== -->
-  <div id="modal-shortcuts" class="hidden fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-3 sm:p-4">
-    <div class="bg-zinc-950 border border-white/15 rounded-3xl max-w-md w-full p-5 sm:p-7 shadow-2xl relative">
-      <button id="btn-close-shortcuts-modal" class="absolute top-5 right-5 text-zinc-400 hover:text-white p-1 rounded-lg">
-        <i data-lucide="x" class="w-5 h-5"></i>
-      </button>
-
-      <h3 class="text-base sm:text-lg font-extrabold text-white mb-4 flex items-center gap-2 font-comic uppercase tracking-wider">
-        <i data-lucide="sparkles" class="w-5 h-5 text-emerald-400"></i>
-        <span>Controles y Navegación Cinemática</span>
-      </h3>
-
-      <div class="space-y-2.5 text-xs mb-5">
-        <div class="p-3 rounded-2xl bg-emerald-500/10 border border-emerald-500/25 text-emerald-300 mb-2">
-          <span class="font-mono font-bold uppercase tracking-wider block mb-1">🎬 Carrusel y Lector Ultra-HD:</span>
-          <ul class="list-disc list-inside space-y-1 text-zinc-300 text-[11px]">
-            <li><strong>Carrusel 3D:</strong> Desliza a izquierda/derecha o haz clic en la portada para abrir su colección completa de capítulos.</li>
-            <li><strong>Zoom de Viñeta:</strong> Haz doble clic o activa el <em>Modo Viñeta (V)</em> para ampliar cualquier viñeta a pantalla grande.</li>
-            <li><strong>Pantalla Completa:</strong> Pulsa el botón superior o la tecla <em>F</em>.</li>
-          </ul>
-        </div>
-
-        <div class="flex items-center justify-between p-2.5 rounded-xl bg-zinc-900 border border-white/5">
-          <span class="text-zinc-300">Pasar Página</span>
-          <div class="flex gap-1 font-mono">
-            <kbd class="px-2 py-0.5 bg-zinc-800 rounded border border-white/10 text-emerald-400">→</kbd>
-            <kbd class="px-2 py-0.5 bg-zinc-800 rounded border border-white/10 text-emerald-400">Espacio</kbd>
-          </div>
-        </div>
-        <div class="flex items-center justify-between p-2.5 rounded-xl bg-zinc-900 border border-white/5">
-          <span class="text-zinc-300">Modo Viñeta en Pantalla Grande</span>
-          <kbd class="px-2 py-0.5 bg-zinc-800 rounded border border-white/10 font-mono text-emerald-400">V / Doble Clic</kbd>
-        </div>
-        <div class="flex items-center justify-between p-2.5 rounded-xl bg-zinc-900 border border-white/5">
-          <span class="text-zinc-300">Pantalla Completa</span>
-          <kbd class="px-2 py-0.5 bg-zinc-800 rounded border border-white/10 font-mono text-emerald-400">F</kbd>
-        </div>
-        <div class="flex items-center justify-between p-2.5 rounded-xl bg-zinc-900 border border-white/5">
-          <span class="text-zinc-300">Salir / Volver</span>
-          <kbd class="px-2 py-0.5 bg-zinc-800 rounded border border-white/10 font-mono text-emerald-400">Esc</kbd>
-        </div>
-      </div>
-
-      <div class="text-center">
-        <button id="btn-ok-shortcuts" class="w-full py-2.5 bg-white hover:bg-emerald-400 text-black font-mono font-bold text-xs uppercase tracking-widest rounded-full transition">
-          Entendido
         </button>
       </div>
     </div>
@@ -1247,7 +965,6 @@
     function inferSeriesName(title) {
       if (!title) return 'Colección General';
       let s = title.trim();
-      // Eliminar patrones de capítulo/número al final: "#1", "Cap 2", "Vol. 1", "Tomo 3", "- 01", subtítulos tras ":"
       s = s.replace(/\s*(?:#\d+|Cap(?:ítulo|itulo|\.)?\s*\d+|Vol(?:umen|\.)?\s*\d+|Tomo\s*\d+|Ep(?:isodio|\.)?\s*\d+|Parte\s*\d+).*$/i, '');
       if (s.includes(':')) {
         const parts = s.split(':');
@@ -1260,8 +977,17 @@
     // Agrupar todos los cómics subidos por Colección / Saga para el Carrusel Cinemático
     function getCollectionsList() {
       const map = new Map();
+      const q = (AppState.searchQuery || '').toLowerCase().trim();
+
       AppState.comics.forEach(c => {
         const seriesName = (c.series && c.series.trim()) ? c.series.trim() : inferSeriesName(c.title);
+        if (q) {
+          const matchesTitle = c.title.toLowerCase().includes(q);
+          const matchesSeries = seriesName.toLowerCase().includes(q);
+          const matchesGenre = c.genre && c.genre.toLowerCase().includes(q);
+          if (!matchesTitle && !matchesSeries && !matchesGenre) return;
+        }
+
         if (!map.has(seriesName)) {
           map.set(seriesName, {
             name: seriesName,
@@ -1277,7 +1003,6 @@
         if ((c.lastReadAt || 0) > group.lastReadAt) group.lastReadAt = c.lastReadAt;
       });
 
-      // Ordenar capítulos dentro de cada colección (por título o fecha de subida)
       const collections = Array.from(map.values());
       collections.forEach(col => {
         col.chapters.sort((a, b) => a.title.localeCompare(b.title, undefined, { numeric: true, sensitivity: 'base' }));
@@ -1285,25 +1010,47 @@
       return collections;
     }
 
-    // Actualizar Datalist y Selector de Colecciones
-    function updateSeriesSelectors() {
-      const collections = getCollectionsList();
-      const datalist = document.getElementById('existing-series-datalist');
-      if (datalist) {
-        datalist.innerHTML = collections.map(col => `<option value="${col.name.replace(/"/g, '&quot;')}"></option>`).join('');
-      }
+    // Obtener todas las colecciones sin filtro de búsqueda (para el selector al subir cómic)
+    function getAllSeriesNames() {
+      const set = new Set();
+      AppState.comics.forEach(c => {
+        const s = (c.series && c.series.trim()) ? c.series.trim() : inferSeriesName(c.title);
+        if (s) set.add(s);
+      });
+      return Array.from(set);
+    }
 
-      const filterSelect = document.getElementById('series-filter-select');
-      if (filterSelect) {
-        const currentVal = AppState.seriesFilter || 'all';
-        filterSelect.innerHTML = `<option value="all">Todas las colecciones (${collections.length})</option>` +
-          collections.map(col => `<option value="${col.name.replace(/"/g, '&quot;')}">${col.name} (${col.chapters.length})</option>`).join('');
-        filterSelect.value = collections.some(c => c.name === currentVal) ? currentVal : 'all';
+    // Actualizar el selector de "¿Dónde deseas guardar este cómic?" en el modal de subida
+    function updateSeriesSelectors(preselectedSeries = '') {
+      const modeSelect = document.getElementById('upload-collection-mode-select');
+      const newWrapper = document.getElementById('new-collection-input-wrapper');
+      const seriesInput = document.getElementById('upload-series-input');
+      if (!modeSelect) return;
+
+      const existingNames = getAllSeriesNames();
+
+      let optionsHtml = `<option value="__NEW__">+ Crear una nueva colección</option>`;
+      existingNames.forEach(name => {
+        const safe = name.replace(/"/g, '&quot;');
+        optionsHtml += `<option value="${safe}">Adjuntar a: ${name}</option>`;
+      });
+      modeSelect.innerHTML = optionsHtml;
+
+      if (preselectedSeries && existingNames.includes(preselectedSeries)) {
+        modeSelect.value = preselectedSeries;
+        newWrapper?.classList.add('hidden');
+      } else if (AppState.selectedSeries && existingNames.includes(AppState.selectedSeries)) {
+        modeSelect.value = AppState.selectedSeries;
+        newWrapper?.classList.add('hidden');
+      } else {
+        modeSelect.value = '__NEW__';
+        newWrapper?.classList.remove('hidden');
+        if (seriesInput) seriesInput.value = '';
       }
     }
 
     // ========================================================
-    // CARRUSEL CINEMÁTICO 3D (PORTADAS DE TUS COLECCIONES)
+    // CARRUSEL CINEMÁTICO 3D (PORTADAS EN ROJO PROFUNDO)
     // ========================================================
     function renderHeroCarousel() {
       const track = document.getElementById('carousel-track');
@@ -1319,17 +1066,17 @@
 
       if (collections.length === 0) {
         track.innerHTML = `
-          <div class="w-64 sm:w-76 aspect-[3/4] rounded-3xl border border-white/15 bg-zinc-900/70 backdrop-blur-xl flex flex-col items-center justify-center p-6 text-center shadow-2xl cursor-pointer hover:border-emerald-400/60 transition" id="empty-carousel-card">
-            <div class="w-14 h-14 rounded-full bg-emerald-500/15 text-emerald-400 flex items-center justify-center mb-3">
+          <div class="w-64 sm:w-76 aspect-[3/4] rounded-3xl border border-red-500/25 bg-zinc-950/80 backdrop-blur-xl flex flex-col items-center justify-center p-6 text-center shadow-2xl cursor-pointer hover:border-red-500/70 transition" id="empty-carousel-card">
+            <div class="w-14 h-14 rounded-full bg-red-500/15 text-red-400 flex items-center justify-center mb-3">
               <i data-lucide="plus" class="w-7 h-7"></i>
             </div>
-            <h3 class="font-comic uppercase text-base text-white tracking-wider mb-1">Sin Cómics en Cartelera</h3>
-            <p class="text-xs text-zinc-400 editorial-italic">Toca aquí para subir tu primer PDF (ej. Batman Absolute #1)</p>
+            <h3 class="font-comic uppercase text-base text-white tracking-wider mb-1">Sin Cómics Subidos</h3>
+            <p class="text-xs text-zinc-400 editorial-italic">Pulsa "Agregar Cómic" abajo para crear tu primera colección</p>
           </div>
         `;
         if (counterEl) counterEl.textContent = '00 / 00';
-        if (titleEl) titleEl.textContent = 'Sube tu primer cómic';
-        if (genreEl) genreEl.textContent = 'COLECCIÓN VACÍA';
+        if (titleEl) titleEl.textContent = 'Sin colecciones activas';
+        if (genreEl) genreEl.textContent = 'VACÍO';
         if (countEl) countEl.textContent = '0 CAPÍTULOS';
         if (dotsContainer) dotsContainer.innerHTML = '';
         if (window.lucide) lucide.createIcons({ root: track });
@@ -1337,7 +1084,6 @@
         return;
       }
 
-      // Asegurar índice válido en bucle
       if (AppState.carouselIndex >= collections.length) AppState.carouselIndex = 0;
       if (AppState.carouselIndex < 0) AppState.carouselIndex = collections.length - 1;
 
@@ -1349,23 +1095,23 @@
         backdropEl.style.backgroundImage = `url('${activeCol.coverUrl}')`;
       }
 
-      // Actualizar textos del Spotlight
       if (counterEl) {
         counterEl.textContent = `${String(activeIdx + 1).padStart(2, '0')} / ${String(collections.length).padStart(2, '0')}`;
       }
-      if (titleEl) titleEl.textContent = activeCol.name;
+      if (titleEl) {
+        titleEl.textContent = activeCol.name;
+        titleEl.onclick = () => openCollectionDetail(activeCol.name);
+      }
       if (genreEl) genreEl.textContent = activeCol.genre || 'COLECCIÓN';
       if (countEl) {
         countEl.textContent = `${activeCol.chapters.length} ${activeCol.chapters.length === 1 ? 'CAPÍTULO SUBIDO' : 'CAPÍTULOS SUBIDOS'}`;
       }
 
-      // Renderizar tarjetas 3D en el escenario
       track.innerHTML = '';
       const isMobile = window.innerWidth < 640;
       const baseSpacing = isMobile ? 165 : 260;
 
       collections.forEach((col, idx) => {
-        // Calcular distancia circular más corta para efecto infinito suave
         let offset = idx - activeIdx;
         const half = Math.floor(collections.length / 2);
         if (collections.length > 2) {
@@ -1375,27 +1121,25 @@
 
         const absOffset = Math.abs(offset);
         const isCenter = offset === 0;
-
-        // Ocultar tarjetas demasiado lejanas para mantener rendimiento limpio
         const isVisible = absOffset <= 2;
 
         const translateX = offset * baseSpacing;
         const translateZ = isCenter ? 60 : -Math.min(absOffset * 130, 320);
         const rotateY = offset === 0 ? 0 : (offset < 0 ? 28 : -28);
-        const scale = isCenter ? 1.05 : Math.max(0.72, 1 - absOffset * 0.14);
+        const scale = isCenter ? 1.06 : Math.max(0.72, 1 - absOffset * 0.14);
         const opacity = !isVisible ? 0 : (isCenter ? 1 : Math.max(0.28, 0.75 - (absOffset - 1) * 0.35));
         const blurPx = isCenter ? 0 : Math.min(absOffset * 2, 5);
         const zIndex = 30 - absOffset * 5;
 
         const card = document.createElement('div');
-        card.className = `carousel-card-3d absolute w-56 sm:w-72 aspect-[3/4] rounded-2xl overflow-hidden cursor-pointer border ${isCenter ? 'border-emerald-400/70 glow-emerald' : 'border-white/15 shadow-2xl'}`;
+        card.className = `carousel-card-3d absolute w-56 sm:w-72 aspect-[3/4] rounded-2xl overflow-hidden cursor-pointer border ${isCenter ? 'border-red-500/80 glow-red' : 'border-white/15 shadow-2xl'}`;
         card.style.transform = `translate3d(${translateX}px, 0px, ${translateZ}px) rotateY(${rotateY}deg) scale(${scale})`;
         card.style.opacity = opacity;
         card.style.zIndex = zIndex;
-        card.style.filter = isCenter ? 'brightness(1.03) contrast(1.04)' : `brightness(0.55) blur(${blurPx}px)`;
+        card.style.filter = isCenter ? 'brightness(1.04) contrast(1.05)' : `brightness(0.5) blur(${blurPx}px)`;
         card.style.pointerEvents = isVisible ? 'auto' : 'none';
 
-        const fallbackSvg = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='550' viewBox='0 0 400 550'%3E%3Crect fill='%23091512' width='400' height='550'/%3E%3Ctext fill='%2310b981' font-family='sans-serif' font-size='26' font-weight='bold' x='50%25' y='50%25' text-anchor='middle'%3EPANELVAULT%3C/text%3E%3C/svg%3E";
+        const fallbackSvg = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='550' viewBox='0 0 400 550'%3E%3Crect fill='%23140406' width='400' height='550'/%3E%3Ctext fill='%23ef4444' font-family='sans-serif' font-size='26' font-weight='bold' x='50%25' y='50%25' text-anchor='middle'%3EPANELVAULT%3C/text%3E%3C/svg%3E";
 
         card.innerHTML = `
           <img src="${col.coverUrl || fallbackSvg}" alt="${col.name}" class="w-full h-full object-cover pointer-events-none">
@@ -1403,17 +1147,17 @@
 
           <!-- Top Frame Metadata -->
           <div class="absolute top-3 left-3 right-3 flex items-center justify-between text-[10px] font-mono uppercase tracking-widest pointer-events-none">
-            <span class="px-2.5 py-1 rounded-full bg-black/75 border border-white/15 text-emerald-300 backdrop-blur-md">
+            <span class="px-2.5 py-1 rounded-full bg-black/75 border border-white/15 text-red-300 backdrop-blur-md">
               ${col.genre || 'SAGA'}
             </span>
-            <span class="px-2.5 py-1 rounded-full bg-emerald-500 text-black font-extrabold shadow-md">
+            <span class="px-2.5 py-1 rounded-full bg-red-600 text-white font-extrabold shadow-md">
               ${col.chapters.length} ${col.chapters.length === 1 ? 'CAP' : 'CAPS'}
             </span>
           </div>
 
           <!-- Bottom Editorial Title Overlay -->
           <div class="absolute bottom-0 inset-x-0 p-4 sm:p-5 flex flex-col justify-end pointer-events-none">
-            <span class="text-[10px] font-mono uppercase tracking-[0.2em] text-amber-300/90 mb-0.5">
+            <span class="text-[10px] font-mono uppercase tracking-[0.2em] text-red-400 mb-0.5">
               ${isCenter ? '● CLIC PARA VER CAPÍTULOS' : 'DESLIZAR A ESTA SAGA'}
             </span>
             <h3 class="text-base sm:text-xl font-extrabold text-white font-comic uppercase tracking-wide line-clamp-2 leading-tight drop-shadow">
@@ -1425,10 +1169,8 @@
         card.addEventListener('click', (e) => {
           e.stopPropagation();
           if (AppState.carouselIndex === idx) {
-            // Si ya es la portada central, nos manda directo a la colección de capítulos completos
             openCollectionDetail(col.name);
           } else {
-            // Si es una portada lateral, desliza suavemente el carrusel hacia ella
             AppState.carouselIndex = idx;
             renderHeroCarousel();
           }
@@ -1437,10 +1179,9 @@
         track.appendChild(card);
       });
 
-      // Renderizar puntos de paginación (Dots)
       if (dotsContainer) {
         dotsContainer.innerHTML = collections.map((col, idx) => `
-          <button data-carousel-dot="${idx}" class="h-1.5 rounded-full transition-all ${idx === activeIdx ? 'w-7 bg-emerald-400' : 'w-2 bg-white/25 hover:bg-white/50'}" title="${col.name}"></button>
+          <button data-carousel-dot="${idx}" class="h-1.5 rounded-full transition-all ${idx === activeIdx ? 'w-7 bg-red-500' : 'w-2 bg-white/25 hover:bg-white/50'}" title="${col.name}"></button>
         `).join('');
 
         dotsContainer.querySelectorAll('[data-carousel-dot]').forEach(dot => {
@@ -1459,7 +1200,7 @@
       renderHeroCarousel();
     }
 
-    // Abrir la vista detallada de una Colección (ej. Batman Absolute -> Lista de capítulos completos)
+    // Abrir la lista de capítulos completos de la colección al hacer clic en su portada del carrusel
     function openCollectionDetail(seriesName) {
       const collections = getCollectionsList();
       const col = collections.find(c => c.name === seriesName);
@@ -1467,6 +1208,7 @@
 
       AppState.selectedSeries = seriesName;
 
+      const heroSection = document.getElementById('hero-carousel-section');
       const sectionEl = document.getElementById('collection-detail-view');
       const bannerBg = document.getElementById('collection-banner-bg');
       const posterImg = document.getElementById('collection-Poster-img');
@@ -1489,29 +1231,29 @@
         gridEl.appendChild(card);
       });
 
+      // Mostrar la colección de capítulos y ocultar el carrusel para una interfaz limpia
+      heroSection?.classList.add('hidden');
       sectionEl.classList.remove('hidden');
+
       if (window.lucide) lucide.createIcons({ root: sectionEl });
       attachCardListeners(gridEl);
-
-      // Desplazar suavemente hacia la lista de capítulos de la colección
-      sectionEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     function closeCollectionDetail() {
       AppState.selectedSeries = null;
-      const sectionEl = document.getElementById('collection-detail-view');
-      if (sectionEl) sectionEl.classList.add('hidden');
-      document.getElementById('hero-carousel-section')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      document.getElementById('collection-detail-view')?.classList.add('hidden');
+      document.getElementById('hero-carousel-section')?.classList.remove('hidden');
+      renderHeroCarousel();
     }
 
-    // Modal de confirmación para eliminar cómic definitivamente (sin window.confirm bloqueado)
     function requestDeleteComic(id) {
       const comic = AppState.comics.find(c => c.id === id);
       const title = comic ? comic.title : 'este cómic';
       AppState.pendingDeleteId = id;
       const msgEl = document.getElementById('confirm-delete-message');
       if (msgEl) {
-        msgEl.textContent = `¿Estás seguro de que quieres eliminar definitivamente "${title}"? Se borrará de tu colección y de la memoria de tu dispositivo.`;
+        msgEl.textContent = `¿Estás seguro de que quieres eliminar definitivamente "${title}"? Se borrará de la colección y de la memoria de tu dispositivo.`;
       }
       document.getElementById('modal-confirm-delete')?.classList.remove('hidden');
     }
@@ -1528,13 +1270,9 @@
       const comic = AppState.comics.find(c => c.id === id);
       const title = comic ? comic.title : 'este cómic';
 
-      // 1. Quitar del array en memoria
       AppState.comics = AppState.comics.filter(c => c.id !== id);
-
-      // 2. Quitar permanentemente de IndexedDB
       await DB.deleteComic(id);
 
-      // 3. Registrar en lista negra de eliminados en localStorage para que NUNCA vuelva a salir
       try {
         const deletedList = JSON.parse(localStorage.getItem('panelvault_deleted_ids') || '[]');
         if (!deletedList.includes(id)) {
@@ -1543,14 +1281,13 @@
         }
       } catch (e) {}
 
-      // 4. Si era un cómic demo, marcarlo como eliminado
       if (id === 'comic_demo_cyberpunk') {
-        localStorage.setItem('panelvault_demo_deleted', 'true');
+        try { localStorage.setItem('panelvault_demo_deleted', 'true'); } catch (e) {}
       }
 
-      // 5. Actualizar interfaz completa
       updateSeriesSelectors();
       renderHeroCarousel();
+
       if (AppState.selectedSeries) {
         const remaining = getCollectionsList().find(c => c.name === AppState.selectedSeries);
         if (remaining) {
@@ -1559,56 +1296,7 @@
           closeCollectionDetail();
         }
       }
-      renderHeroCarousel();
-      if (AppState.selectedSeries) openCollectionDetail(AppState.selectedSeries);
-      renderComicsGrid();
-      updateLibraryStats();
-      showToast(`"${title}" ha sido eliminado definitivamente`, 'info');
-    }
-
-    // Cambiar entre Estantería Personal y Galería
-    function switchSection(section) {
-      AppState.activeSection = section;
-      try { localStorage.setItem('panelvault_active_section', section); } catch (e) {}
-
-      const tabBookshelf = document.getElementById('tab-bookshelf');
-      const tabGallery = document.getElementById('tab-gallery');
-      const mobBookshelf = document.getElementById('btn-mobile-nav-shelf');
-      const mobGallery = document.getElementById('btn-mobile-nav-gallery');
-
-      const titleEl = document.getElementById('section-heading-text');
-      const subEl = document.getElementById('section-subtitle');
-      const iconEl = document.getElementById('section-icon');
-
-      if (section === 'bookshelf') {
-        tabBookshelf?.classList.add('bg-white', 'text-black', 'shadow-md');
-        tabBookshelf?.classList.remove('text-zinc-400');
-        tabGallery?.classList.remove('bg-white', 'text-black', 'shadow-md');
-        tabGallery?.classList.add('text-zinc-400');
-
-        if (mobBookshelf) mobBookshelf.className = 'flex flex-col items-center gap-1 text-emerald-400 text-[10px] font-mono uppercase tracking-wider font-bold py-1';
-        if (mobGallery) mobGallery.className = 'flex flex-col items-center gap-1 text-zinc-400 hover:text-white text-[10px] font-mono uppercase tracking-wider font-semibold py-1';
-
-        if (titleEl) titleEl.textContent = 'Estantería Personal';
-        if (subEl) subEl.textContent = 'Cómics en lectura activa o destacados en tu estante';
-        if (iconEl) iconEl.setAttribute('data-lucide', 'book-marked');
-      } else {
-        tabGallery?.classList.add('bg-white', 'text-black', 'shadow-md');
-        tabGallery?.classList.remove('text-zinc-400');
-        tabBookshelf?.classList.remove('bg-white', 'text-black', 'shadow-md');
-        tabBookshelf?.classList.add('text-zinc-400');
-
-        if (mobGallery) mobGallery.className = 'flex flex-col items-center gap-1 text-emerald-400 text-[10px] font-mono uppercase tracking-wider font-bold py-1';
-        if (mobBookshelf) mobBookshelf.className = 'flex flex-col items-center gap-1 text-zinc-400 hover:text-white text-[10px] font-mono uppercase tracking-wider font-semibold py-1';
-
-        if (titleEl) titleEl.textContent = 'Galería Completa';
-        if (subEl) subEl.textContent = 'Todos los capítulos y volúmenes subidos a tu dispositivo';
-        if (iconEl) iconEl.setAttribute('data-lucide', 'layout-grid');
-      }
-
-      if (window.lucide) lucide.createIcons();
-      renderComicsGrid();
-      updateLibraryStats();
+      showToast(`"${title}" eliminado definitivamente`, 'info');
     }
 
     async function loadComics() {
@@ -1638,14 +1326,12 @@
         try { localStorage.setItem('panelvault_initialized', 'true'); } catch (e) {}
       }
 
-      // Asegurar que cada cómic tenga su propiedad series inferida si no la tenía
       AppState.comics.forEach(c => {
         if (!c.series) {
           c.series = inferSeriesName(c.title);
         }
       });
 
-      // Load bookmarks
       try {
         const savedBm = localStorage.getItem('panelvault_bookmarks');
         if (savedBm) AppState.bookmarks = JSON.parse(savedBm);
@@ -1653,70 +1339,16 @@
 
       updateSeriesSelectors();
       renderHeroCarousel();
-      switchSection(AppState.activeSection);
-      updateLibraryStats();
     }
 
-    // Actualizar contadores de las dos secciones
-    function updateLibraryStats() {
-      const totalGallery = AppState.comics.length;
-      const totalBookshelf = AppState.comics.filter(c => c.inShelf !== false && (c.inShelf || c.favorite || (c.currentPage && c.currentPage > 1))).length;
-
-      const badgeBookshelf = document.getElementById('badge-bookshelf-count');
-      const badgeGallery = document.getElementById('badge-gallery-count');
-      if (badgeBookshelf) badgeBookshelf.textContent = totalBookshelf;
-      if (badgeGallery) badgeGallery.textContent = totalGallery;
-    }
-
-    function getFilteredComics() {
-      let list = [...AppState.comics];
-
-      // 1. Filtro por sección (Estantería personal vs Galería completa)
-      if (AppState.activeSection === 'bookshelf') {
-        list = list.filter(c => c.inShelf !== false && (c.inShelf || c.favorite || (c.currentPage && c.currentPage > 1)));
-      }
-
-      // 2. Filtro por Colección / Saga seleccionada en el dropdown
-      if (AppState.seriesFilter && AppState.seriesFilter !== 'all') {
-        list = list.filter(c => (c.series || inferSeriesName(c.title)) === AppState.seriesFilter);
-      }
-
-      // 3. Filtro de búsqueda
-      const q = AppState.searchQuery.toLowerCase().trim();
-      if (q) {
-        list = list.filter(c => 
-          c.title.toLowerCase().includes(q) || 
-          (c.series && c.series.toLowerCase().includes(q)) ||
-          (c.genre && c.genre.toLowerCase().includes(q))
-        );
-      }
-
-      // 4. Ordenamiento
-      if (AppState.sortBy === 'recent') {
-        list.sort((a, b) => (b.lastReadAt || 0) - (a.lastReadAt || 0));
-      } else if (AppState.sortBy === 'title-asc') {
-        list.sort((a, b) => a.title.localeCompare(b.title, undefined, { numeric: true }));
-      } else if (AppState.sortBy === 'title-desc') {
-        list.sort((a, b) => b.title.localeCompare(a.title, undefined, { numeric: true }));
-      } else if (AppState.sortBy === 'pages-desc') {
-        list.sort((a, b) => b.pages - a.pages);
-      } else if (AppState.sortBy === 'progress-desc') {
-        list.sort((a, b) => (b.currentPage / b.pages) - (a.currentPage / a.pages));
-      }
-
-      return list;
-    }
-
-    // Construir elemento DOM de una tarjeta de cómic con estética cinemática
-    function createComicCardElement(comic, chapterBadgeNum = null) {
+    // Tarjeta limpia de capítulo dentro de una colección
+    function createComicCardElement(comic, chapterBadgeNum = 1) {
       const progressPercent = Math.min(100, Math.round(((comic.currentPage || 1) / comic.pages) * 100));
-      const isOnShelf = comic.inShelf !== false && (comic.inShelf || comic.favorite || (comic.currentPage && comic.currentPage > 1));
-      const seriesName = comic.series || inferSeriesName(comic.title);
 
       const card = document.createElement('div');
-      card.className = 'group flex flex-col bg-zinc-950/85 border border-white/10 hover:border-emerald-400/70 rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-emerald-500/10 active:scale-[0.98] backdrop-blur';
+      card.className = 'group flex flex-col bg-zinc-950/90 border border-white/10 hover:border-red-500/70 rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-red-600/15 active:scale-[0.98]';
 
-      const fallbackSvg = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='400' viewBox='0 0 300 400'%3E%3Crect fill='%23091512' width='300' height='400'/%3E%3Ctext fill='%2310b981' font-family='sans-serif' font-size='22' font-weight='bold' x='50%25' y='50%25' text-anchor='middle' dominant-baseline='middle'%3ECOMIC PDF%3C/text%3E%3C/svg%3E";
+      const fallbackSvg = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='400' viewBox='0 0 300 400'%3E%3Crect fill='%23140406' width='300' height='400'/%3E%3Ctext fill='%23ef4444' font-family='sans-serif' font-size='22' font-weight='bold' x='50%25' y='50%25' text-anchor='middle' dominant-baseline='middle'%3ECOMIC PDF%3C/text%3E%3C/svg%3E";
 
       card.innerHTML = `
         <!-- Cover Thumbnail -->
@@ -1725,186 +1357,52 @@
                alt="${comic.title}" 
                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                loading="lazy">
-          <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/40 pointer-events-none"></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/30 pointer-events-none"></div>
 
-          <!-- Saga / Número Badge -->
-          <div class="absolute top-2.5 left-2.5 z-10 flex items-center gap-1">
-            ${chapterBadgeNum ? `<span class="px-2 py-0.5 rounded-full text-[10px] font-mono font-extrabold bg-emerald-400 text-black shadow">CAP #${chapterBadgeNum}</span>` : ''}
-            <span class="px-2 py-0.5 rounded-full text-[9px] font-mono uppercase tracking-wider bg-black/80 text-zinc-200 border border-white/15 backdrop-blur">
-              ${comic.genre || 'PDF'}
+          <!-- Número de Capítulo -->
+          <div class="absolute top-2.5 left-2.5 z-10">
+            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-extrabold bg-red-600 text-white shadow">
+              CAP #${chapterBadgeNum}
             </span>
           </div>
 
-          <!-- Botón Estantería Personal -->
-          <button class="btn-toggle-shelf absolute top-2.5 right-2.5 z-10 px-2.5 py-1 rounded-full bg-black/80 hover:bg-zinc-900 backdrop-blur border border-white/15 flex items-center gap-1 transition active:scale-90" 
-                  data-comic-id="${comic.id}" 
-                  title="${isOnShelf ? 'Quitar de mi estantería' : 'Añadir a mi estantería'}">
-            <i data-lucide="star" class="w-3 h-3 ${isOnShelf ? 'fill-amber-400 text-amber-400' : 'text-zinc-400'}"></i>
-            <span class="text-[9px] font-mono uppercase font-bold ${isOnShelf ? 'text-amber-300' : 'text-zinc-400'}">
-              ${isOnShelf ? 'Estante' : '+ Estante'}
-            </span>
+          <!-- Botón Eliminar Capítulo -->
+          <button class="btn-delete-comic absolute top-2.5 right-2.5 z-10 p-1.5 rounded-full bg-black/80 hover:bg-red-600 text-zinc-400 hover:text-white border border-white/15 transition active:scale-90" data-comic-id="${comic.id}" title="Eliminar capítulo">
+            <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
           </button>
 
           <!-- Overlay Leer -->
-          <div class="absolute bottom-2.5 left-2.5 right-2.5 z-10 flex items-center justify-center opacity-95 group-hover:opacity-100 transition">
-            <span class="w-full py-1.5 rounded-full bg-white/95 group-hover:bg-emerald-400 text-black text-[10px] sm:text-xs font-mono font-extrabold text-center shadow-lg uppercase tracking-widest flex items-center justify-center gap-1.5 transition-colors">
+          <div class="absolute bottom-2.5 left-2.5 right-2.5 z-10 flex items-center justify-center">
+            <span class="w-full py-1.5 rounded-full bg-white/95 group-hover:bg-red-600 text-black group-hover:text-white text-[10px] sm:text-xs font-mono font-extrabold text-center shadow-lg uppercase tracking-widest flex items-center justify-center gap-1.5 transition-colors">
               <i data-lucide="play" class="w-3 h-3 fill-current"></i>
-              <span>${comic.currentPage > 1 ? 'Continuar' : 'Leer Capítulo'}</span>
+              <span>${comic.currentPage > 1 ? 'Continuar' : 'Leer'}</span>
             </span>
           </div>
         </div>
 
         <!-- Información del capítulo -->
-        <div class="p-3 sm:p-3.5 flex flex-col flex-1 justify-between gap-2.5">
+        <div class="p-3 sm:p-3.5 flex flex-col flex-1 justify-between gap-2">
           <div>
-            <button class="btn-filter-series text-[10px] font-mono uppercase tracking-wider text-emerald-400 hover:underline line-clamp-1 text-left mb-0.5" data-series-name="${seriesName.replace(/"/g, '&quot;')}">
-              ${seriesName}
-            </button>
-            <h3 class="font-bold text-xs sm:text-sm text-white line-clamp-1 group-hover:text-emerald-300 transition cursor-pointer btn-open-comic" data-comic-id="${comic.id}" title="${comic.title}">
+            <h3 class="font-bold text-xs sm:text-sm text-white line-clamp-1 group-hover:text-red-400 transition cursor-pointer btn-open-comic" data-comic-id="${comic.id}" title="${comic.title}">
               ${comic.title}
             </h3>
-            <p class="text-[10px] font-mono text-zinc-500 mt-0.5 flex items-center gap-1.5">
-              <span>${comic.pages} PÁGS</span>
-              <span>•</span>
-              <span>${comic.sizeFormatted || 'PDF'}</span>
+            <p class="text-[10px] font-mono text-zinc-500 mt-0.5">
+              ${comic.pages} PÁGS • PÁG ${comic.currentPage || 1}/${comic.pages} (${progressPercent}%)
             </p>
           </div>
-
-          <!-- Barra de Progreso -->
-          <div>
-            <div class="flex items-center justify-between text-[10px] font-mono text-zinc-400 mb-1">
-              <span>PÁG ${comic.currentPage || 1}/${comic.pages}</span>
-              <span class="${progressPercent === 100 ? 'text-emerald-400 font-bold' : ''}">${progressPercent}%</span>
-            </div>
-            <div class="w-full h-1 bg-zinc-800 rounded-full overflow-hidden">
-              <div class="h-full bg-gradient-to-r from-emerald-400 to-amber-300 rounded-full transition-all duration-300" style="width: ${progressPercent}%"></div>
-            </div>
-          </div>
-
-          <!-- Botones de Acción: Leer, Editar, Borrar -->
-          <div class="pt-2 border-t border-white/10 flex items-center justify-between gap-1.5">
-            <button class="btn-open-comic flex-1 py-1.5 px-2 bg-zinc-900 hover:bg-zinc-800 text-white rounded-lg flex items-center justify-center gap-1 text-[10px] font-mono uppercase tracking-wider font-bold transition active:scale-95 border border-white/5" data-comic-id="${comic.id}">
-              <i data-lucide="book-open" class="w-3 h-3 text-emerald-400"></i>
-              <span>Abrir</span>
-            </button>
-
-            <button class="btn-edit-comic text-zinc-400 hover:text-white bg-zinc-900/80 hover:bg-zinc-800 active:scale-95 p-1.5 rounded-lg transition border border-white/5" data-comic-id="${comic.id}" title="Editar colección o título">
-              <i data-lucide="settings-2" class="w-3.5 h-3.5"></i>
-            </button>
-
-            <button class="btn-delete-comic text-rose-400 hover:text-rose-300 bg-rose-500/10 hover:bg-rose-500/20 active:scale-95 p-1.5 rounded-lg transition border border-rose-500/20" data-comic-id="${comic.id}" title="Eliminar cómic definitivamente">
-              <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
-            </button>
+          <div class="w-full h-1 bg-zinc-800 rounded-full overflow-hidden">
+            <div class="h-full bg-gradient-to-r from-red-600 to-rose-400 rounded-full transition-all duration-300" style="width: ${progressPercent}%"></div>
           </div>
         </div>
       `;
       return card;
     }
 
-    // Renderizar cuadrícula de cómics
-    function renderComicsGrid() {
-      const container = document.getElementById('comics-grid');
-      const emptyState = document.getElementById('empty-state');
-      if (!container || !emptyState) return;
-      const filtered = getFilteredComics();
-
-      container.innerHTML = '';
-
-      if (filtered.length === 0) {
-        emptyState.classList.remove('hidden');
-        emptyState.classList.add('flex');
-
-        const emptyIcon = document.getElementById('empty-icon');
-        const emptyTitle = document.getElementById('empty-title');
-        const emptyDesc = document.getElementById('empty-desc');
-        const emptyBtn = document.getElementById('empty-action-btn');
-        const emptyBtnText = document.getElementById('empty-action-text');
-
-        if (AppState.searchQuery.trim() || AppState.seriesFilter !== 'all') {
-          if (emptyIcon) emptyIcon.setAttribute('data-lucide', 'search-x');
-          if (emptyTitle) emptyTitle.textContent = 'No se encontraron capítulos';
-          if (emptyDesc) emptyDesc.textContent = 'No hay ningún cómic que coincida con tu filtro actual.';
-          if (emptyBtnText) emptyBtnText.textContent = 'Restablecer filtros';
-          if (emptyBtn) emptyBtn.onclick = () => {
-            AppState.searchQuery = '';
-            AppState.seriesFilter = 'all';
-            const si = document.getElementById('search-input');
-            if (si) si.value = '';
-            const msi = document.getElementById('mobile-search-input');
-            if (msi) msi.value = '';
-            const sfs = document.getElementById('series-filter-select');
-            if (sfs) sfs.value = 'all';
-            renderComicsGrid();
-          };
-        } else if (AppState.activeSection === 'bookshelf') {
-          if (emptyIcon) emptyIcon.setAttribute('data-lucide', 'book-marked');
-          if (emptyTitle) emptyTitle.textContent = 'Tu estantería personal está vacía';
-          if (emptyDesc) emptyDesc.textContent = 'Aquí aparecen los cómics en lectura activa o destacados. Explora la Galería o añade un nuevo PDF.';
-          if (emptyBtnText) emptyBtnText.textContent = 'Ver Galería';
-          if (emptyBtn) emptyBtn.onclick = () => switchSection('gallery');
-        } else {
-          if (emptyIcon) emptyIcon.setAttribute('data-lucide', 'folder-plus');
-          if (emptyTitle) emptyTitle.textContent = 'Aún no tienes cómics en tu Galería';
-          if (emptyDesc) emptyDesc.textContent = 'Sube tus capítulos en formato PDF para verlos cobrar vida en el carrusel cinemático.';
-          if (emptyBtnText) emptyBtnText.textContent = 'Añadir cómic';
-          if (emptyBtn) emptyBtn.onclick = () => openUploadModal();
-        }
-        if (window.lucide) lucide.createIcons({ root: emptyState });
-        return;
-      }
-
-      emptyState.classList.add('hidden');
-      emptyState.classList.remove('flex');
-
-      filtered.forEach(comic => {
-        const card = createComicCardElement(comic);
-        container.appendChild(card);
-      });
-
-      if (window.lucide) lucide.createIcons({ root: container });
-      attachCardListeners(container);
-    }
-
-    // Escuchadores de eventos para cada tarjeta dentro de un contenedor
     function attachCardListeners(rootEl = document) {
       rootEl.querySelectorAll('.btn-open-comic').forEach(el => {
-        el.addEventListener('click', (e) => {
+        el.addEventListener('click', () => {
           const id = el.getAttribute('data-comic-id');
           openReader(id);
-        });
-      });
-
-      rootEl.querySelectorAll('.btn-filter-series').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-          e.stopPropagation();
-          const seriesName = btn.getAttribute('data-series-name');
-          if (seriesName) openCollectionDetail(seriesName);
-        });
-      });
-
-      rootEl.querySelectorAll('.btn-toggle-shelf').forEach(btn => {
-        btn.addEventListener('click', async (e) => {
-          e.stopPropagation();
-          const id = btn.getAttribute('data-comic-id');
-          const comic = AppState.comics.find(c => c.id === id);
-          if (comic) {
-            const currentlyInShelf = comic.inShelf !== false && (comic.inShelf || comic.favorite || (comic.currentPage && comic.currentPage > 1));
-            comic.inShelf = !currentlyInShelf;
-            comic.favorite = comic.inShelf;
-            await DB.saveComic(comic);
-            renderComicsGrid();
-            if (AppState.selectedSeries) openCollectionDetail(AppState.selectedSeries);
-            updateLibraryStats();
-            showToast(comic.inShelf ? 'Añadido a tu estantería personal' : 'Quitado de tu estantería (sigue en Galería)', 'info');
-          }
-        });
-      });
-
-      rootEl.querySelectorAll('.btn-edit-comic').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-          e.stopPropagation();
-          const id = btn.getAttribute('data-comic-id');
-          openEditModal(id);
         });
       });
 
@@ -1928,7 +1426,15 @@
       progressContainer?.classList.remove('hidden');
 
       const selectedGenre = document.querySelector('input[name="upload-genre"]:checked')?.value || 'Superhéroes';
+      const modeVal = document.getElementById('upload-collection-mode-select')?.value || '__NEW__';
       const customSeriesInput = document.getElementById('upload-series-input')?.value.trim() || '';
+
+      let chosenSeries = '';
+      if (modeVal !== '__NEW__') {
+        chosenSeries = modeVal;
+      } else {
+        chosenSeries = customSeriesInput;
+      }
 
       let lastAddedSeries = null;
 
@@ -1953,7 +1459,6 @@
           const pdfDoc = await loadingTask.promise;
           const totalPages = pdfDoc.numPages;
 
-          // Renderizar Página 1 como portada nítida para el carrusel
           const page1 = await pdfDoc.getPage(1);
           const viewport = page1.getViewport({ scale: 0.9 });
           const offscreenCanvas = document.createElement('canvas');
@@ -1969,7 +1474,7 @@
           let cleanTitle = file.name.replace(/\.[^/.]+$/, "");
           cleanTitle = cleanTitle.replace(/[-_]/g, " ");
 
-          const seriesName = customSeriesInput || inferSeriesName(cleanTitle);
+          const seriesName = chosenSeries || inferSeriesName(cleanTitle);
           lastAddedSeries = seriesName;
 
           const comicObject = {
@@ -1988,7 +1493,7 @@
             pdfBuffer: arrayBuffer
           };
 
-          if (statusText) statusText.textContent = 'Guardando en tu colección...';
+          if (statusText) statusText.textContent = 'Guardando en la colección...';
           if (progressBar) progressBar.style.width = '90%';
           if (percentText) percentText.textContent = '90%';
 
@@ -1997,7 +1502,7 @@
 
           if (progressBar) progressBar.style.width = '100%';
           if (percentText) percentText.textContent = '100%';
-          showToast(`¡"${cleanTitle}" añadido a la colección "${seriesName}"!`, 'success');
+          showToast(`¡"${cleanTitle}" agregado a "${seriesName}"!`, 'success');
         } catch (err) {
           console.error('Error parsing PDF:', err);
           showToast(`Error al leer el archivo PDF: ${file.name}`, 'error');
@@ -2010,7 +1515,6 @@
         closeUploadModal();
         updateSeriesSelectors();
 
-        // Posicionar el carrusel en la colección recién subida
         if (lastAddedSeries) {
           const cols = getCollectionsList();
           const newIdx = cols.findIndex(c => c.name === lastAddedSeries);
@@ -2021,8 +1525,6 @@
         }
 
         renderHeroCarousel();
-        renderComicsGrid();
-        updateLibraryStats();
       }, 500);
     }
 
@@ -2689,17 +2191,7 @@
 
     // Modals Management
     function openUploadModal(preselectedSeries = '') {
-      const seriesInput = document.getElementById('upload-series-input');
-      if (seriesInput) {
-        if (typeof preselectedSeries === 'string' && preselectedSeries.trim()) {
-          seriesInput.value = preselectedSeries.trim();
-        } else if (AppState.selectedSeries) {
-          seriesInput.value = AppState.selectedSeries;
-        } else {
-          seriesInput.value = '';
-        }
-      }
-      updateSeriesSelectors();
+      updateSeriesSelectors(typeof preselectedSeries === 'string' ? preselectedSeries : '');
       document.getElementById('modal-upload')?.classList.remove('hidden');
     }
 
@@ -2707,28 +2199,7 @@
       document.getElementById('modal-upload')?.classList.add('hidden');
     }
 
-    function openEditModal(comicId) {
-      const comic = AppState.comics.find(c => c.id === comicId);
-      if (!comic) return;
-
-      document.getElementById('edit-comic-id').value = comic.id;
-      document.getElementById('edit-comic-title').value = comic.title;
-      const editSeriesEl = document.getElementById('edit-comic-series');
-      if (editSeriesEl) editSeriesEl.value = comic.series || inferSeriesName(comic.title);
-      document.getElementById('edit-comic-genre').value = comic.genre || 'Superhéroes';
-      document.getElementById('edit-comic-pages').textContent = `${comic.pages} páginas`;
-      document.getElementById('edit-comic-progress').textContent = `Página ${comic.currentPage || 1} (${Math.round(((comic.currentPage || 1) / comic.pages) * 100)}%)`;
-      document.getElementById('edit-comic-size').textContent = comic.sizeFormatted || 'N/A';
-
-      updateSeriesSelectors();
-      document.getElementById('modal-comic-details')?.classList.remove('hidden');
-    }
-
-    function closeEditModal() {
-      document.getElementById('modal-comic-details')?.classList.add('hidden');
-    }
-
-    // Mobile Settings Sheet
+    // Mobile Settings Sheet (Reader)
     function openMobileSettings() {
       document.getElementById('sheet-mobile-settings')?.classList.remove('hidden');
     }
@@ -2780,7 +2251,6 @@
       let startY = 0;
       let isDragging = false;
 
-      // Touch Swipe
       vp.addEventListener('touchstart', (e) => {
         if (e.touches && e.touches.length === 1) {
           startX = e.touches[0].clientX;
@@ -2800,7 +2270,6 @@
         }
       }, { passive: true });
 
-      // Mouse Drag on Desktop
       vp.addEventListener('mousedown', (e) => {
         isDragging = true;
         startX = e.clientX;
@@ -2816,7 +2285,6 @@
         }
       });
 
-      // Horizontal Trackpad / Wheel smooth slide
       let wheelCooldown = false;
       vp.addEventListener('wheel', (e) => {
         if (Math.abs(e.deltaX) > 22 || (e.shiftKey && Math.abs(e.deltaY) > 22)) {
@@ -2839,43 +2307,17 @@
         window.scrollTo({ top: 0, behavior: 'smooth' });
       });
 
-      // Carousel Navigation Buttons & Spotlight Actions
+      // Carousel Navigation Buttons
       document.getElementById('btn-carousel-prev')?.addEventListener('click', () => stepCarousel(-1));
       document.getElementById('btn-carousel-next')?.addEventListener('click', () => stepCarousel(1));
 
-      document.getElementById('btn-open-active-collection')?.addEventListener('click', () => {
-        const cols = getCollectionsList();
-        if (cols.length === 0) {
-          openUploadModal();
-          return;
-        }
-        const activeCol = cols[AppState.carouselIndex] || cols[0];
-        if (activeCol) openCollectionDetail(activeCol.name);
-      });
-
-      document.getElementById('btn-read-latest-active')?.addEventListener('click', () => {
-        const cols = getCollectionsList();
-        if (cols.length === 0) {
-          openUploadModal();
-          return;
-        }
-        const activeCol = cols[AppState.carouselIndex] || cols[0];
-        if (activeCol && activeCol.chapters.length > 0) {
-          openReader(activeCol.chapters[0].id);
-        }
-      });
-
-      // Collection Detail View Actions
+      // Collection Detail View Back Button
       document.getElementById('btn-back-from-collection')?.addEventListener('click', closeCollectionDetail);
-      document.getElementById('btn-add-chapter-to-collection')?.addEventListener('click', () => {
-        openUploadModal(AppState.selectedSeries || '');
-      });
 
       setupCarouselInteractions();
 
       // Search
       const searchInput = document.getElementById('search-input');
-      const mobileSearchInput = document.getElementById('mobile-search-input');
       const clearSearchBtn = document.getElementById('search-clear-btn');
 
       function handleSearch(val) {
@@ -2885,42 +2327,25 @@
         } else {
           clearSearchBtn?.classList.add('hidden');
         }
-        renderComicsGrid();
+        AppState.carouselIndex = 0;
+        renderHeroCarousel();
       }
 
       searchInput?.addEventListener('input', (e) => handleSearch(e.target.value));
-      mobileSearchInput?.addEventListener('input', (e) => handleSearch(e.target.value));
       clearSearchBtn?.addEventListener('click', () => {
         if (searchInput) searchInput.value = '';
-        if (mobileSearchInput) mobileSearchInput.value = '';
         handleSearch('');
       });
 
-      // SECCIONES PRINCIPALES: Estantería Personal | Añadir Cómic | Galería
-      document.getElementById('tab-bookshelf')?.addEventListener('click', () => switchSection('bookshelf'));
-      document.getElementById('tab-gallery')?.addEventListener('click', () => switchSection('gallery'));
-      document.getElementById('btn-add-comic-center')?.addEventListener('click', () => openUploadModal());
-
-      // Mobile Bottom Nav actions
-      document.getElementById('btn-mobile-nav-shelf')?.addEventListener('click', () => {
-        switchSection('bookshelf');
-        document.getElementById('main-grid-section')?.scrollIntoView({ behavior: 'smooth' });
-      });
-      document.getElementById('btn-mobile-nav-gallery')?.addEventListener('click', () => {
-        switchSection('gallery');
-        document.getElementById('main-grid-section')?.scrollIntoView({ behavior: 'smooth' });
-      });
-      document.getElementById('btn-mobile-nav-upload')?.addEventListener('click', () => openUploadModal());
-
-      // Series Filter & Sort
-      document.getElementById('series-filter-select')?.addEventListener('change', (e) => {
-        AppState.seriesFilter = e.target.value;
-        renderComicsGrid();
-      });
-
-      document.getElementById('sort-select')?.addEventListener('change', (e) => {
-        AppState.sortBy = e.target.value;
-        renderComicsGrid();
+      // Selector en modal: Crear nueva colección vs Adjuntar a existente
+      document.getElementById('upload-collection-mode-select')?.addEventListener('change', (e) => {
+        const wrapper = document.getElementById('new-collection-input-wrapper');
+        if (e.target.value === '__NEW__') {
+          wrapper?.classList.remove('hidden');
+          document.getElementById('upload-series-input')?.focus();
+        } else {
+          wrapper?.classList.add('hidden');
+        }
       });
 
       // Upload Modal Pickers & Dropzone
@@ -2930,18 +2355,17 @@
       modalDropArea?.addEventListener('click', () => modalFileInput?.click());
       modalFileInput?.addEventListener('change', (e) => processPdfFiles(e.target.files));
 
-      // Global & Modal Drag and Drop
       ['dragenter', 'dragover'].forEach(eventName => {
         modalDropArea?.addEventListener(eventName, (e) => {
           e.preventDefault();
-          modalDropArea.classList.add('border-emerald-400');
+          modalDropArea.classList.add('border-red-500');
         });
       });
 
       ['dragleave', 'drop'].forEach(eventName => {
         modalDropArea?.addEventListener(eventName, (e) => {
           e.preventDefault();
-          modalDropArea.classList.remove('border-emerald-400');
+          modalDropArea.classList.remove('border-red-500');
         });
       });
 
@@ -2960,7 +2384,7 @@
         }
       });
 
-      // Upload Modal Open/Close
+      // Único botón de Agregar Cómic (abajo) y cierre de modal
       document.getElementById('btn-open-upload-modal')?.addEventListener('click', () => openUploadModal());
       document.getElementById('btn-close-upload-modal')?.addEventListener('click', closeUploadModal);
       document.getElementById('btn-cancel-upload')?.addEventListener('click', closeUploadModal);
@@ -2971,81 +2395,6 @@
         document.getElementById('modal-confirm-delete')?.classList.add('hidden');
       });
       document.getElementById('btn-accept-confirm-delete')?.addEventListener('click', executeConfirmedDelete);
-
-      // Shortcuts Modal
-      document.getElementById('btn-shortcuts')?.addEventListener('click', () => {
-        document.getElementById('modal-shortcuts')?.classList.remove('hidden');
-      });
-      document.getElementById('btn-close-shortcuts-modal')?.addEventListener('click', () => {
-        document.getElementById('modal-shortcuts')?.classList.add('hidden');
-      });
-      document.getElementById('btn-ok-shortcuts')?.addEventListener('click', () => {
-        document.getElementById('modal-shortcuts')?.classList.add('hidden');
-      });
-
-      // Details Modal Close, Save & Permanent Delete
-      document.getElementById('btn-close-details-modal')?.addEventListener('click', closeEditModal);
-      
-      document.getElementById('btn-modal-delete-comic')?.addEventListener('click', () => {
-        const id = document.getElementById('edit-comic-id').value;
-        closeEditModal();
-        requestDeleteComic(id);
-      });
-
-      document.getElementById('btn-save-comic-details')?.addEventListener('click', async () => {
-        const id = document.getElementById('edit-comic-id').value;
-        const comic = AppState.comics.find(c => c.id === id);
-        if (comic) {
-          comic.title = document.getElementById('edit-comic-title').value.trim() || comic.title;
-          const seriesVal = document.getElementById('edit-comic-series')?.value.trim();
-          comic.series = seriesVal || inferSeriesName(comic.title);
-          comic.genre = document.getElementById('edit-comic-genre').value;
-          await DB.saveComic(comic);
-          
-          closeEditModal();
-          updateSeriesSelectors();
-          renderHeroCarousel();
-          if (AppState.selectedSeries) openCollectionDetail(comic.series);
-          renderComicsGrid();
-          updateLibraryStats();
-          showToast('Capítulo y colección actualizados', 'success');
-        }
-      });
-
-      document.getElementById('btn-reset-progress')?.addEventListener('click', async () => {
-        const id = document.getElementById('edit-comic-id').value;
-        const comic = AppState.comics.find(c => c.id === id);
-        if (comic) {
-          comic.currentPage = 1;
-          await DB.saveComic(comic);
-          document.getElementById('edit-comic-progress').textContent = 'Página 1 (0%)';
-          renderComicsGrid();
-          if (AppState.selectedSeries) openCollectionDetail(AppState.selectedSeries);
-          updateLibraryStats();
-          showToast('Progreso reiniciado a la página 1', 'info');
-        }
-      });
-
-      // Export Library
-      document.getElementById('btn-export-library')?.addEventListener('click', () => {
-        const exportData = AppState.comics.map(c => ({
-          title: c.title,
-          series: c.series || inferSeriesName(c.title),
-          genre: c.genre,
-          pages: c.pages,
-          currentPage: c.currentPage,
-          inShelf: c.inShelf,
-          favorite: c.favorite
-        }));
-        const blob = new Blob([JSON.stringify(exportData, null, 2)], { type: 'application/json' });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = `PanelVault_Colecciones_${new Date().toISOString().slice(0, 10)}.json`;
-        a.click();
-        URL.revokeObjectURL(url);
-        showToast('Colección exportada con éxito', 'success');
-      });
 
       // ==========================================
       // Reader Navigation Events
