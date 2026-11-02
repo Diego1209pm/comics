@@ -186,26 +186,18 @@
       <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-[#050102]"></div>
     </div>
 
-    <!-- Minimalist Cinematic Header -->
+    <!-- Minimalist Cinematic Header (No top metadata bar, Batman Logo) -->
     <header class="sticky top-0 z-30 bg-black/65 backdrop-blur-xl border-b border-white/[0.07] safe-top">
-      <!-- Micro Editorial Metadata Bar -->
-      <div class="max-w-7xl mx-auto px-4 sm:px-8 pt-2 pb-1.5 border-b border-white/[0.05] flex items-center justify-between text-[10px] font-mono tracking-[0.25em] text-zinc-400 uppercase">
-        <span class="flex items-center gap-1.5">
-          <span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></span>
-          <span>NOV 2026 // ARCHIVE</span>
-        </span>
-        <span class="hidden sm:inline text-zinc-300 font-semibold tracking-[0.3em]">@PANELVAULT • CINEMATIC EDITION</span>
-        <span>COLECCIÓN DIGITAL</span>
-      </div>
-
-      <!-- Main Navigation Row (Clean: Brand + Search Only) -->
-      <div class="max-w-7xl mx-auto px-4 sm:px-8 h-14 sm:h-16 flex items-center justify-between gap-4">
-        <!-- Brand / Logo -->
-        <div class="flex items-center gap-3 cursor-pointer" id="brand-logo-home">
-          <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-red-500 via-rose-600 to-red-900 p-[1px] shadow-lg shadow-red-600/25 shrink-0">
-            <div class="w-full h-full bg-zinc-950 rounded-[11px] flex items-center justify-center text-white">
-              <i data-lucide="film" class="w-4 h-4 sm:w-5 sm:h-5 text-red-500"></i>
-            </div>
+      <!-- Main Navigation Row (Clean: Batman Logo + Search + Custom Logo Trigger) -->
+      <div class="max-w-7xl mx-auto px-4 sm:px-8 h-16 sm:h-20 flex items-center justify-between gap-4">
+        <!-- Brand / Batman Logo -->
+        <div class="flex items-center gap-3.5 cursor-pointer group" id="brand-logo-home">
+          <div class="relative w-11 h-11 sm:w-12 sm:h-12 rounded-xl overflow-hidden bg-black border border-red-500/50 shadow-lg shadow-red-600/30 shrink-0 flex items-center justify-center">
+            <img id="custom-brand-logo-img" src="data:image/jpeg;base64,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" alt="Batman Logo" class="w-full h-full object-cover">
+            <button id="btn-change-logo" type="button" class="absolute inset-0 bg-black/75 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-[9px] font-mono uppercase text-red-300 font-bold text-center leading-tight" title="Cambiar imagen del logo">
+              Cambiar
+            </button>
+            <input type="file" id="logo-file-input" accept="image/*" class="hidden">
           </div>
           <div>
             <div class="flex items-center gap-2">
@@ -2301,6 +2293,34 @@
 
     // Initialize Event Listeners
     function initListeners() {
+      // Load saved custom logo if user uploaded one
+      try {
+        const savedLogo = localStorage.getItem('panelvault_custom_logo');
+        const logoImg = document.getElementById('custom-brand-logo-img');
+        if (savedLogo && logoImg) logoImg.src = savedLogo;
+      } catch (e) {}
+
+      // Change Logo Image Handler
+      const btnChangeLogo = document.getElementById('btn-change-logo');
+      const logoFileInput = document.getElementById('logo-file-input');
+      btnChangeLogo?.addEventListener('click', (e) => {
+        e.stopPropagation();
+        logoFileInput?.click();
+      });
+      logoFileInput?.addEventListener('change', (e) => {
+        const file = e.target.files && e.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = () => {
+          const dataUrl = reader.result;
+          const logoImg = document.getElementById('custom-brand-logo-img');
+          if (logoImg) logoImg.src = dataUrl;
+          try { localStorage.setItem('panelvault_custom_logo', dataUrl); } catch (err) {}
+          showToast('Logo actualizado correctamente', 'success');
+        };
+        reader.readAsDataURL(file);
+      });
+
       // Brand Logo Home Reset
       document.getElementById('brand-logo-home')?.addEventListener('click', () => {
         closeCollectionDetail();
